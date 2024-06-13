@@ -24,9 +24,10 @@ class BaseViewController: UIViewController, CodeBasable {
         configureNavigationItem()
     }
     
+    func configureNavigationItem() {}
+    
     func configureHierarchy() {}
     
     func configureLayout() {}
     
-    func configureNavigationItem() {}
 }
