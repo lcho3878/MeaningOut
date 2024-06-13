@@ -20,6 +20,7 @@
 		542A02472C1B590500F8BE47 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 542A02462C1B590500F8BE47 /* Alamofire */; };
 		542A024A2C1B590D00F8BE47 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 542A02492C1B590D00F8BE47 /* SnapKit */; };
 		542A024E2C1B5B2200F8BE47 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A024D2C1B5B2200F8BE47 /* UIColor+Extension.swift */; };
+		542A02502C1B5B7F00F8BE47 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A024F2C1B5B7F00F8BE47 /* Constant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		542A023D2C1B55CB00F8BE47 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		542A02402C1B564D00F8BE47 /* CodeBasable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeBasable.swift; sourceTree = "<group>"; };
 		542A024D2C1B5B2200F8BE47 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		542A024F2C1B5B7F00F8BE47 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 		542A024B2C1B5B0C00F8BE47 /* Enum */ = {
 			isa = PBXGroup;
 			children = (
+				542A024F2C1B5B7F00F8BE47 /* Constant.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 				542A024E2C1B5B2200F8BE47 /* UIColor+Extension.swift in Sources */,
 				542A023E2C1B55CB00F8BE47 /* BaseViewController.swift in Sources */,
 				542A02292C1B534B00F8BE47 /* ViewController.swift in Sources */,
+				542A02502C1B5B7F00F8BE47 /* Constant.swift in Sources */,
 				542A02252C1B534B00F8BE47 /* AppDelegate.swift in Sources */,
 				542A023B2C1B538300F8BE47 /* APIKey.swift in Sources */,
 				542A02272C1B534B00F8BE47 /* SceneDelegate.swift in Sources */,
