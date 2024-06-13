@@ -13,4 +13,6 @@ protocol CodeBasable {
     
     func configureLayout ()
     
+    func configureNavigationItem()
+    
 }
