@@ -21,6 +21,7 @@
 		542A024A2C1B590D00F8BE47 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 542A02492C1B590D00F8BE47 /* SnapKit */; };
 		542A024E2C1B5B2200F8BE47 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A024D2C1B5B2200F8BE47 /* UIColor+Extension.swift */; };
 		542A02502C1B5B7F00F8BE47 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A024F2C1B5B7F00F8BE47 /* Constant.swift */; };
+		542A02522C1B5CFB00F8BE47 /* OrangeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A02512C1B5CFB00F8BE47 /* OrangeButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		542A02402C1B564D00F8BE47 /* CodeBasable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeBasable.swift; sourceTree = "<group>"; };
 		542A024D2C1B5B2200F8BE47 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		542A024F2C1B5B7F00F8BE47 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		542A02512C1B5CFB00F8BE47 /* OrangeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrangeButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				542A023D2C1B55CB00F8BE47 /* BaseViewController.swift */,
+				542A02512C1B5CFB00F8BE47 /* OrangeButton.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				542A024E2C1B5B2200F8BE47 /* UIColor+Extension.swift in Sources */,
+				542A02522C1B5CFB00F8BE47 /* OrangeButton.swift in Sources */,
 				542A023E2C1B55CB00F8BE47 /* BaseViewController.swift in Sources */,
 				542A02292C1B534B00F8BE47 /* ViewController.swift in Sources */,
 				542A02502C1B5B7F00F8BE47 /* Constant.swift in Sources */,
