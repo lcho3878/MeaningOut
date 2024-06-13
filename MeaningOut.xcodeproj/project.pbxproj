@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		542A02252C1B534B00F8BE47 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A02242C1B534B00F8BE47 /* AppDelegate.swift */; };
 		542A02272C1B534B00F8BE47 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A02262C1B534B00F8BE47 /* SceneDelegate.swift */; };
-		542A02292C1B534B00F8BE47 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A02282C1B534B00F8BE47 /* ViewController.swift */; };
+		542A02292C1B534B00F8BE47 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A02282C1B534B00F8BE47 /* OnboardingViewController.swift */; };
 		542A022E2C1B534C00F8BE47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 542A022D2C1B534C00F8BE47 /* Assets.xcassets */; };
 		542A02312C1B534C00F8BE47 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 542A02302C1B534C00F8BE47 /* Base */; };
 		542A02392C1B535F00F8BE47 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 542A02382C1B535F00F8BE47 /* .gitignore */; };
@@ -28,7 +28,7 @@
 		542A02212C1B534B00F8BE47 /* MeaningOut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeaningOut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		542A02242C1B534B00F8BE47 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		542A02262C1B534B00F8BE47 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		542A02282C1B534B00F8BE47 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		542A02282C1B534B00F8BE47 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		542A022D2C1B534C00F8BE47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		542A02302C1B534C00F8BE47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		542A02322C1B534C00F8BE47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -81,7 +81,7 @@
 				542A023C2C1B55C100F8BE47 /* CustomView */,
 				542A02242C1B534B00F8BE47 /* AppDelegate.swift */,
 				542A02262C1B534B00F8BE47 /* SceneDelegate.swift */,
-				542A02282C1B534B00F8BE47 /* ViewController.swift */,
+				542A02282C1B534B00F8BE47 /* OnboardingViewController.swift */,
 				542A022D2C1B534C00F8BE47 /* Assets.xcassets */,
 				542A022F2C1B534C00F8BE47 /* LaunchScreen.storyboard */,
 				542A02322C1B534C00F8BE47 /* Info.plist */,
@@ -207,7 +207,7 @@
 				542A024E2C1B5B2200F8BE47 /* UIColor+Extension.swift in Sources */,
 				542A02522C1B5CFB00F8BE47 /* OrangeButton.swift in Sources */,
 				542A023E2C1B55CB00F8BE47 /* BaseViewController.swift in Sources */,
-				542A02292C1B534B00F8BE47 /* ViewController.swift in Sources */,
+				542A02292C1B534B00F8BE47 /* OnboardingViewController.swift in Sources */,
 				542A02502C1B5B7F00F8BE47 /* Constant.swift in Sources */,
 				542A02252C1B534B00F8BE47 /* AppDelegate.swift in Sources */,
 				542A023B2C1B538300F8BE47 /* APIKey.swift in Sources */,
