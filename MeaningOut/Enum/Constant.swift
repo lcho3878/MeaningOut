@@ -31,6 +31,22 @@ enum Constant {
         case result
         case profileEdit
         
+        var navigationTitle: String {
+            switch self {
+            case .profileSetting:
+                return "PROFILE SETTING"
+            case .main:
+                return "'s MEANING OUT"
+            case .setting:
+                return "SETTING"
+            case .search:
+                return ""
+            case .result:
+                return ""
+            case .profileEdit:
+                return "EDIT PROFILE"
+            }
+        }
     }
     
 }

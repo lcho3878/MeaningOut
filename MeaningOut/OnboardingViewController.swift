@@ -25,8 +25,9 @@ class OnboardingViewController: BaseViewController  {
         return imageView
     }()
     
-    private let startButton = {
+    private lazy var startButton = {
         let startButton = OrangeButton(buttonType: .start)
+        startButton.addTarget(self, action: #selector(startButtonClicked), for: .touchUpInside)
         return startButton
     }()
 
@@ -62,5 +63,14 @@ class OnboardingViewController: BaseViewController  {
         
     }
 
+}
+
+extension OnboardingViewController {
+    @objc
+    private func startButtonClicked() {
+        let profileSettingVC = ProfileViewController()
+        profileSettingVC.viewType = Constant.ViewType.profileSetting
+        navigationController?.pushViewController(profileSettingVC, animated: true)
+    }
 }
 
