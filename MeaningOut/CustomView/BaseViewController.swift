@@ -7,11 +7,20 @@
 
 import UIKit
 
-class BaseViewController: UIViewController {
+class BaseViewController: UIViewController, CodeBasable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        configureHierarchy()
+        configureLayout()
     }
     
+    func configureHierarchy() {
+        
+    }
+    
+    func configureLayout() {
+        
+    }
 }
