@@ -23,6 +23,20 @@ enum Constant {
         case complete = "완료"
     }
     
+    enum TextFieldType: String {
+        case nickname = "닉네임을 입력해주세요 :)"
+        case search
+    }
+    
+    enum FontSize {
+        static let title = UIFont.systemFont(ofSize: 16)
+        static let titleBold = UIFont.boldSystemFont(ofSize: 16)
+        static let content = UIFont.systemFont(ofSize: 14)
+        static let contentBold = UIFont.boldSystemFont(ofSize: 14)
+        static let subtTitle = UIFont.systemFont(ofSize: 13)
+        static let subtTitleBold = UIFont.boldSystemFont(ofSize: 13)
+    }
+    
     enum ViewType: String {
         case profileSetting
         case main
