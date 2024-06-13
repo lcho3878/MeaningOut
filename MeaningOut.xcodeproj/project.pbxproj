@@ -75,15 +75,13 @@
 		542A02232C1B534B00F8BE47 /* MeaningOut */ = {
 			isa = PBXGroup;
 			children = (
+				542A02532C1B630700F8BE47 /* Resource */,
 				542A024C2C1B5B1400F8BE47 /* Extension */,
 				542A024B2C1B5B0C00F8BE47 /* Enum */,
 				542A023F2C1B562B00F8BE47 /* Protocol */,
 				542A023C2C1B55C100F8BE47 /* CustomView */,
-				542A02242C1B534B00F8BE47 /* AppDelegate.swift */,
-				542A02262C1B534B00F8BE47 /* SceneDelegate.swift */,
 				542A02282C1B534B00F8BE47 /* OnboardingViewController.swift */,
 				542A022D2C1B534C00F8BE47 /* Assets.xcassets */,
-				542A022F2C1B534C00F8BE47 /* LaunchScreen.storyboard */,
 				542A02322C1B534C00F8BE47 /* Info.plist */,
 				542A023A2C1B538300F8BE47 /* APIKey.swift */,
 			);
@@ -121,6 +119,16 @@
 				542A024D2C1B5B2200F8BE47 /* UIColor+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		542A02532C1B630700F8BE47 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				542A022F2C1B534C00F8BE47 /* LaunchScreen.storyboard */,
+				542A02242C1B534B00F8BE47 /* AppDelegate.swift */,
+				542A02262C1B534B00F8BE47 /* SceneDelegate.swift */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
