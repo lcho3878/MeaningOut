@@ -23,4 +23,14 @@ enum Constant {
         case complete = "완료"
     }
     
+    enum ViewType: String {
+        case profileSetting
+        case main
+        case setting
+        case search
+        case result
+        case profileEdit
+        
+    }
+    
 }
