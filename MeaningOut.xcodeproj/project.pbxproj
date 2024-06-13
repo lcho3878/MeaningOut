@@ -23,6 +23,7 @@
 		542A02502C1B5B7F00F8BE47 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A024F2C1B5B7F00F8BE47 /* Constant.swift */; };
 		542A02522C1B5CFB00F8BE47 /* OrangeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A02512C1B5CFB00F8BE47 /* OrangeButton.swift */; };
 		542A02552C1B646100F8BE47 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A02542C1B646100F8BE47 /* ProfileViewController.swift */; };
+		542A02572C1B69A100F8BE47 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A02562C1B69A100F8BE47 /* UIView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		542A024F2C1B5B7F00F8BE47 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		542A02512C1B5CFB00F8BE47 /* OrangeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrangeButton.swift; sourceTree = "<group>"; };
 		542A02542C1B646100F8BE47 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		542A02562C1B69A100F8BE47 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				542A024D2C1B5B2200F8BE47 /* UIColor+Extension.swift */,
+				542A02562C1B69A100F8BE47 /* UIView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				542A02572C1B69A100F8BE47 /* UIView+Extension.swift in Sources */,
 				542A024E2C1B5B2200F8BE47 /* UIColor+Extension.swift in Sources */,
 				542A02522C1B5CFB00F8BE47 /* OrangeButton.swift in Sources */,
 				542A023E2C1B55CB00F8BE47 /* BaseViewController.swift in Sources */,
