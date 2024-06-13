@@ -18,13 +18,12 @@ class BaseViewController: UIViewController, CodeBasable {
         view.backgroundColor = .systemBackground
         configureHierarchy()
         configureLayout()
+        configureNavigationItem()
     }
     
-    func configureHierarchy() {
-        
-    }
+    func configureHierarchy() {}
     
-    func configureLayout() {
-        
-    }
+    func configureLayout() {}
+    
+    func configureNavigationItem() {}
 }
