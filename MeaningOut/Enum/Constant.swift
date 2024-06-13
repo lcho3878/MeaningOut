@@ -8,6 +8,7 @@
 import UIKit
 
 enum Constant {
+    
     enum AppColor {
         static let orange = UIColor(hexCode: "EF8947")
         static let black = UIColor(hexCode: "000000")
@@ -16,4 +17,10 @@ enum Constant {
         static let middleGray = UIColor(hexCode: "828282")
         static let heavyGray = UIColor(hexCode: "4C4C4C")
     }
+    
+    enum ButtonType: String {
+        case start = "시작하기"
+        case complete = "완료"
+    }
+    
 }
