@@ -34,6 +34,7 @@
 		542A02682C1C56AC00F8BE47 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A02672C1C56AC00F8BE47 /* ProfileCell.swift */; };
 		542A026A2C1C581500F8BE47 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A02692C1C581500F8BE47 /* UITableViewCell+Extension.swift */; };
 		542A026C2C1C5CF700F8BE47 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A026B2C1C5CF700F8BE47 /* SettingCell.swift */; };
+		542A026E2C1C60D600F8BE47 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A026D2C1C60D600F8BE47 /* Date+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		542A02672C1C56AC00F8BE47 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		542A02692C1C581500F8BE47 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 		542A026B2C1C5CF700F8BE47 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
+		542A026D2C1C60D600F8BE47 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 				542A02562C1B69A100F8BE47 /* UIView+Extension.swift */,
 				542A02642C1C4C1E00F8BE47 /* UICollectionViewCell+Extension.swift */,
 				542A02692C1C581500F8BE47 /* UITableViewCell+Extension.swift */,
+				542A026D2C1C60D600F8BE47 /* Date+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				542A02632C1C4BF100F8BE47 /* Reusable.swift in Sources */,
+				542A026E2C1C60D600F8BE47 /* Date+Extension.swift in Sources */,
 				542A02592C1C15B400F8BE47 /* ProfileImageViewController.swift in Sources */,
 				542A02572C1B69A100F8BE47 /* UIView+Extension.swift in Sources */,
 				542A024E2C1B5B2200F8BE47 /* UIColor+Extension.swift in Sources */,
