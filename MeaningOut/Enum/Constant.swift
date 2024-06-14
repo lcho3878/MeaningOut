@@ -16,6 +16,13 @@ enum Constant {
         static let lightGray = UIColor(hexCode: "CDCDCD")
         static let middleGray = UIColor(hexCode: "828282")
         static let heavyGray = UIColor(hexCode: "4C4C4C")
+        
+        static let orangeBorder = UIColor(hexCode: "EF8947", alpha: 0.5)
+        static let blackBorder = UIColor(hexCode: "000000", alpha: 0.5)
+        static let whiteBorder = UIColor(hexCode: "FFFFFF", alpha: 0.5)
+        static let lightGrayBorder = UIColor(hexCode: "CDCDCD", alpha: 0.5)
+        static let middleGrayBorder = UIColor(hexCode: "828282", alpha: 0.5)
+        static let heavyGrayBorder = UIColor(hexCode: "4C4C4C", alpha: 0.5)
     }
     
     enum ButtonType: String {

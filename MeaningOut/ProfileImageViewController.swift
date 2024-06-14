@@ -41,9 +41,9 @@ class ProfileImageViewController: BaseViewController {
         layout.minimumInteritemSpacing = spacing
         layout.sectionInset = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: spacing)
         
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        let imageCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
 
-        return cv
+        return imageCollectionView
     }()
     
     override func viewDidLoad() {
@@ -101,7 +101,7 @@ extension ProfileImageViewController: UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileImageCollectionViewCell", for: indexPath) as? ProfileImageCollectionViewCell else { return UICollectionViewCell() }
-
+        
         return cell
     }
     
