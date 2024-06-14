@@ -102,7 +102,7 @@ extension ProfileImageViewController: UICollectionViewDelegate, UICollectionView
     private func configureCollectionView() {
         imageCollectionView.delegate = self
         imageCollectionView.dataSource = self
-        imageCollectionView.register(ProfileImageCollectionViewCell.self, forCellWithReuseIdentifier: "ProfileImageCollectionViewCell")
+        imageCollectionView.register(ProfileImageCollectionViewCell.self, forCellWithReuseIdentifier: ProfileImageCollectionViewCell.id)
         guard let selectedIndex = profileImages.firstIndex(of: profileImage) else { return }
         imageCollectionView.selectItem(at: IndexPath(row: selectedIndex, section: 0), animated: false, scrollPosition: .centeredHorizontally)
         
@@ -113,7 +113,7 @@ extension ProfileImageViewController: UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileImageCollectionViewCell", for: indexPath) as? ProfileImageCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileImageCollectionViewCell.id, for: indexPath) as? ProfileImageCollectionViewCell else { return UICollectionViewCell() }
         let data = profileImages[indexPath.row]
         cell.configureData(data)
         return cell

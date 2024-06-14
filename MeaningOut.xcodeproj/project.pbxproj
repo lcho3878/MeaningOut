@@ -29,6 +29,8 @@
 		542A025D2C1C3BBF00F8BE47 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A025C2C1C3BBF00F8BE47 /* TabBarController.swift */; };
 		542A025F2C1C3DE600F8BE47 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A025E2C1C3DE600F8BE47 /* MainViewController.swift */; };
 		542A02612C1C4AF700F8BE47 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A02602C1C4AF700F8BE47 /* SettingViewController.swift */; };
+		542A02632C1C4BF100F8BE47 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A02622C1C4BF100F8BE47 /* Reusable.swift */; };
+		542A02652C1C4C1E00F8BE47 /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A02642C1C4C1E00F8BE47 /* UICollectionViewCell+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +55,8 @@
 		542A025C2C1C3BBF00F8BE47 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		542A025E2C1C3DE600F8BE47 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		542A02602C1C4AF700F8BE47 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		542A02622C1C4BF100F8BE47 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		542A02642C1C4C1E00F8BE47 /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				542A02402C1B564D00F8BE47 /* CodeBasable.swift */,
+				542A02622C1C4BF100F8BE47 /* Reusable.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -138,6 +143,7 @@
 			children = (
 				542A024D2C1B5B2200F8BE47 /* UIColor+Extension.swift */,
 				542A02562C1B69A100F8BE47 /* UIView+Extension.swift */,
+				542A02642C1C4C1E00F8BE47 /* UICollectionViewCell+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -233,6 +239,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				542A02632C1C4BF100F8BE47 /* Reusable.swift in Sources */,
 				542A02592C1C15B400F8BE47 /* ProfileImageViewController.swift in Sources */,
 				542A02572C1B69A100F8BE47 /* UIView+Extension.swift in Sources */,
 				542A024E2C1B5B2200F8BE47 /* UIColor+Extension.swift in Sources */,
@@ -240,6 +247,7 @@
 				542A02522C1B5CFB00F8BE47 /* OrangeButton.swift in Sources */,
 				542A023E2C1B55CB00F8BE47 /* BaseViewController.swift in Sources */,
 				542A02292C1B534B00F8BE47 /* OnboardingViewController.swift in Sources */,
+				542A02652C1C4C1E00F8BE47 /* UICollectionViewCell+Extension.swift in Sources */,
 				542A02502C1B5B7F00F8BE47 /* Constant.swift in Sources */,
 				542A02252C1B534B00F8BE47 /* AppDelegate.swift in Sources */,
 				542A023B2C1B538300F8BE47 /* APIKey.swift in Sources */,
