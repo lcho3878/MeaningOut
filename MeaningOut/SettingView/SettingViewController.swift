@@ -49,6 +49,9 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         settingTableView.delegate = self
         settingTableView.dataSource = self
         settingTableView.isScrollEnabled = false
+        
+        settingTableView.register(ProfileCell.self, forCellReuseIdentifier: ProfileCell.id)
+        settingTableView.register(SettingCell.self, forCellReuseIdentifier: SettingCell.id)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -60,15 +63,17 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-//        if indexPath.section == 0 {
-//
-//        }
-//        else {
-//
-//        }
-
-        return cell
+        let cellType: UITableViewCell
+        if indexPath.section == 0 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: ProfileCell.id, for: indexPath) as? ProfileCell else { return UITableViewCell() }
+            return cell
+        }
+        else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingCell.id, for: indexPath) as? SettingCell else { return UITableViewCell() }
+            let data = settingMenus[indexPath.row]
+            cell.configureData(data.rawValue)
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
