@@ -12,6 +12,7 @@ class ProfileViewController: BaseViewController {
     
     var viewType: Constant.ViewType!
     
+    // 초기 이미지 랜덤 넣어야함
     private let profileImageView = {
         let profileImageView = UIImageView()
         profileImageView.image = UIImage.profile0
@@ -30,18 +31,20 @@ class ProfileViewController: BaseViewController {
         return cameraImageView
     }()
     
-    private let nicknameTextField = {
+    private lazy var nicknameTextField = {
         let nicknameTextField = UITextField()
         nicknameTextField.font = Constant.FontSize.contentBold
         nicknameTextField.placeholder = Constant.TextFieldType.nickname.rawValue
+        nicknameTextField.addTarget(self, action: #selector(nicknameTextFieldChanged), for: .editingChanged)
+        nicknameTextField.addTarget(self, action: #selector(nicknameTextFieldEndEdit), for: .editingDidEndOnExit)
         return nicknameTextField
     }()
     
     private let validCheckLabel = {
-        let lb = UILabel()
-        lb.font = Constant.FontSize.subtTitle
-        lb.textColor = Constant.AppColor.orange
-        return lb
+        let validCheckLabel = UILabel()
+        validCheckLabel.font = Constant.FontSize.subtTitle
+        validCheckLabel.textColor = Constant.AppColor.orange
+        return validCheckLabel
     }()
     
     private let completeButton = OrangeButton(buttonType: .complete)
@@ -101,4 +104,41 @@ class ProfileViewController: BaseViewController {
         }
     }
     
+    private func configureValidCheckLabel(_ validResult: Constant.NicknameValid) {
+        validCheckLabel.text = validResult.validResult
+    }
+
+}
+
+// nicknameTextField 관련 로직
+extension ProfileViewController {
+    @objc
+    private func nicknameTextFieldChanged(_ sender: UITextField) {
+        guard let nickname = nicknameTextField.text else { return }
+        configureValidCheckLabel(checkValid(nickname))
+
+    }
+    
+    @objc
+    private func nicknameTextFieldEndEdit(_ sender: UITextField) {
+
+    }
+
+    // 유효성 검사 부분 좀더 다듬을 수 있으면 다듬을 것
+    private func checkValid(_ text: String) -> Constant.NicknameValid {
+        guard text.count >= 2, text.count < 10 else { return .nicknameLength}
+        
+        let special: [Character] = ["@", "#", "$", "%"]
+        let number: [Character] = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
+        for char in text {
+            if special.contains(char) {
+                return .containSpecial
+            }
+            else if number.contains(char) {
+                return .containNumber
+            }
+        }
+
+        return .correct
+    }
 }
