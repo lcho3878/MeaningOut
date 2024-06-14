@@ -172,7 +172,7 @@ struct User {
             guard let signupDate = UserDefaults.standard.string(forKey: "signupDate") else {
                 return nil
             }
-            return signupDate
+            return signupDate + " 가입"
         }
         set {
             UserDefaults.standard.set(newValue, forKey: "signupDate")

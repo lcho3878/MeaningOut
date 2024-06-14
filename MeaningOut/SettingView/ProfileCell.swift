@@ -14,7 +14,7 @@ class ProfileCell: UITableViewCell {
         let profileImageView = UIImageView()
         profileImageView.layer.borderColor = Constant.ProfileImageUI.main.borderColor
         profileImageView.layer.borderWidth = Constant.ProfileImageUI.main.borderWidth
-        profileImageView.backgroundColor = .gray
+        profileImageView.clipsToBounds = true
         return profileImageView
     }()
     
@@ -42,6 +42,7 @@ class ProfileCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configureHierachy()
         configureLayout()
+        configureData()
     }
     
     required init?(coder: NSCoder) {
@@ -82,6 +83,12 @@ class ProfileCell: UITableViewCell {
             $0.trailing.equalTo(contentView.safeAreaLayoutGuide).inset(8)
             $0.centerY.equalToSuperview()
         }
+    }
+    
+    private func configureData() {
+        profileImageView.image = User.profileImage
+        nicknameLabel.text = User.nickanme
+        dateLabel.text = User.signupDate
     }
 
 
