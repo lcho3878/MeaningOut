@@ -11,7 +11,10 @@ class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let mainVC = MainViewController()
+        let mainNaVC = UINavigationController(rootViewController: mainVC)
+        
+        setViewControllers([mainNaVC], animated: false)
     }
     
 }

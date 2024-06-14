@@ -16,9 +16,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
-        let onboardVC = OnboardingViewController()
-        let nav = UINavigationController(rootViewController: onboardVC)
-        window?.rootViewController = nav
+        let rootVC: UIViewController
+        if User.nickanme != nil {
+            rootVC = TabBarController()
+        }
+        else {
+            let onboardVC = OnboardingViewController()
+            let nav = UINavigationController(rootViewController: onboardVC)
+            rootVC = nav
+        }
+
+        window?.rootViewController = rootVC
         window?.makeKeyAndVisible()
     }
 
