@@ -135,6 +135,7 @@ extension ProfileViewController {
               checkValid(nickname) == .correct else { return }
         User.nickanme = nickname
         User.profileImage = profileImageView.image
+        User.signupDate = Date().dateString("yyyy.MM.dd")
         let tabbarVC = TabBarController()
         changeRootViewController(tabbarVC)
     }

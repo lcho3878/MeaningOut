@@ -166,4 +166,16 @@ struct User {
             UserDefaults.standard.set(imageAssetName, forKey: "profileImageAssetName")
         }
     }
+    
+    static var signupDate: String? {
+        get {
+            guard let signupDate = UserDefaults.standard.string(forKey: "signupDate") else {
+                return nil
+            }
+            return signupDate
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "signupDate")
+        }
+    }
 }
