@@ -114,6 +114,7 @@ class ProfileViewController: BaseViewController {
     @objc
     private func profileImageViewTapped() {
         let profileImageVC = ProfileImageViewController()
+        profileImageVC.delegate = self
         profileImageVC.viewType = .profileSetting
         profileImageVC.profileImage = profileImageView.image
         navigationController?.pushViewController(profileImageVC, animated: true)
@@ -151,4 +152,12 @@ extension ProfileViewController {
 
         return .correct
     }
+}
+
+extension ProfileViewController: ProfileImageViewControllerDelegate {
+    
+    func updateProfileImage(_ image: UIImage) {
+        profileImageView.image = image
+    }
+    
 }

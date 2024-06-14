@@ -8,11 +8,19 @@
 import UIKit
 import SnapKit
 
+protocol ProfileImageViewControllerDelegate: AnyObject {
+    func updateProfileImage(_ image: UIImage)
+}
+
 class ProfileImageViewController: BaseViewController {
     
     var viewType: Constant.ViewType!
     
     var profileImage: UIImage!
+    
+    private let profileImages = ProfileImage.profileImages
+    
+    weak var delegate: ProfileImageViewControllerDelegate?
     
     private lazy var profileImageView = {
         let profileImageView = UIImageView()
@@ -95,20 +103,26 @@ extension ProfileImageViewController: UICollectionViewDelegate, UICollectionView
         imageCollectionView.delegate = self
         imageCollectionView.dataSource = self
         imageCollectionView.register(ProfileImageCollectionViewCell.self, forCellWithReuseIdentifier: "ProfileImageCollectionViewCell")
-        guard let selectedIndex = ProfileImage.profileImages.firstIndex(of: profileImage) else { return }
+        guard let selectedIndex = profileImages.firstIndex(of: profileImage) else { return }
         imageCollectionView.selectItem(at: IndexPath(row: selectedIndex, section: 0), animated: false, scrollPosition: .centeredHorizontally)
         
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return ProfileImage.profileImages.count
+        return profileImages.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileImageCollectionViewCell", for: indexPath) as? ProfileImageCollectionViewCell else { return UICollectionViewCell() }
-        let data = ProfileImage.profileImages[indexPath.row]
+        let data = profileImages[indexPath.row]
         cell.configureData(data)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let image = profileImages[indexPath.row]
+        profileImageView.image = image
+        delegate?.updateProfileImage(image)
     }
     
     
