@@ -14,15 +14,15 @@ class ProfileImageCollectionViewCell: UICollectionViewCell {
         let view = UIImageView()
         view.image = UIImage.profile1
         view.clipsToBounds = true
-        view.layer.borderColor = Constant.AppColor.lightGray.cgColor
-        view.layer.borderWidth = 1
+        view.layer.borderColor = Constant.ProfileImage.notSelect.borderColor
+        view.layer.borderWidth = Constant.ProfileImage.notSelect.borderWidth
         return view
     }()
     
     private let shadowView = {
         let view = UIView()
         view.backgroundColor = Constant.AppColor.white
-        view.layer.opacity = 0.5
+        view.layer.opacity = Constant.ProfileImage.notSelect.showdowOpacity
         return view
     }()
     
@@ -45,16 +45,10 @@ class ProfileImageCollectionViewCell: UICollectionViewCell {
     
     override var isSelected: Bool {
         didSet {
-            if isSelected {
-                shadowView.layer.opacity = 1
-                profileImageView.layer.borderColor = Constant.AppColor.orange.cgColor
-                profileImageView.layer.borderWidth = 3
-            }
-            else {
-                shadowView.layer.opacity = 0.5
-                profileImageView.layer.borderColor = Constant.AppColor.lightGrayBorder.cgColor
-                profileImageView.layer.borderWidth = 1
-            }
+            let selectType: Constant.ProfileImage = isSelected ? .select : .notSelect
+            shadowView.layer.opacity = selectType.showdowOpacity
+            profileImageView.layer.borderColor = selectType.borderColor
+            profileImageView.layer.borderWidth = selectType.borderWidth
         }
     }
     

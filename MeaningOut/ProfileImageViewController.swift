@@ -15,7 +15,7 @@ class ProfileImageViewController: BaseViewController {
     private let profileImageView = {
         let profileImageView = UIImageView()
         profileImageView.image = UIImage.profile0
-        profileImageView.layer.borderWidth = 3
+        profileImageView.layer.borderWidth = Constant.ProfileImage.main.borderWidth
         profileImageView.layer.borderColor = Constant.AppColor.orange.cgColor
         profileImageView.layer.masksToBounds = true
         return profileImageView

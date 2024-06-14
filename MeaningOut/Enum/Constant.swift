@@ -25,6 +25,39 @@ enum Constant {
         static let heavyGrayBorder = UIColor(hexCode: "4C4C4C", alpha: 0.5)
     }
     
+    enum ProfileImage {
+        case main
+        case select
+        case notSelect
+        
+        var showdowOpacity: Float {
+            switch self {
+            case .select, .main:
+                return 1
+            case .notSelect:
+                return 0.5
+            }
+        }
+        
+        var borderColor: CGColor {
+            switch self {
+            case .select, .main:
+                return AppColor.orange.cgColor
+            case .notSelect:
+                return AppColor.lightGrayBorder.cgColor
+            }
+        }
+        
+        var borderWidth: CGFloat {
+            switch self {
+            case .select, .main:
+                return 3
+            case .notSelect:
+                return 1
+            }
+        }
+    }
+    
     enum ButtonType: String {
         case start = "시작하기"
         case complete = "완료"

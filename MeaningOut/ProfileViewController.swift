@@ -18,8 +18,8 @@ class ProfileViewController: BaseViewController {
     private lazy var profileImageView = {
         let profileImageView = UIImageView()
         profileImageView.image = UIImage.profile0
-        profileImageView.layer.borderWidth = 3
-        profileImageView.layer.borderColor = Constant.AppColor.orange.cgColor
+        profileImageView.layer.borderWidth = Constant.ProfileImage.main.borderWidth
+        profileImageView.layer.borderColor = Constant.ProfileImage.main.borderColor
         profileImageView.layer.masksToBounds = true
         let profileImageTapGesture = UITapGestureRecognizer(target: self, action: #selector(profileImageViewTapped))
         profileImageView.addGestureRecognizer(profileImageTapGesture)
