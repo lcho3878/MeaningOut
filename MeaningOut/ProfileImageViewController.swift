@@ -95,6 +95,9 @@ extension ProfileImageViewController: UICollectionViewDelegate, UICollectionView
         imageCollectionView.delegate = self
         imageCollectionView.dataSource = self
         imageCollectionView.register(ProfileImageCollectionViewCell.self, forCellWithReuseIdentifier: "ProfileImageCollectionViewCell")
+        guard let selectedIndex = ProfileImage.profileImages.firstIndex(of: profileImage) else { return }
+        imageCollectionView.selectItem(at: IndexPath(row: selectedIndex, section: 0), animated: false, scrollPosition: .centeredHorizontally)
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
