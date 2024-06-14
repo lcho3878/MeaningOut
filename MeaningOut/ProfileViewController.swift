@@ -12,13 +12,18 @@ class ProfileViewController: BaseViewController {
     
     var viewType: Constant.ViewType!
     
+
+    
     // 초기 이미지 랜덤 넣어야함
-    private let profileImageView = {
+    private lazy var profileImageView = {
         let profileImageView = UIImageView()
         profileImageView.image = UIImage.profile0
         profileImageView.layer.borderWidth = 3
         profileImageView.layer.borderColor = Constant.AppColor.orange.cgColor
         profileImageView.layer.masksToBounds = true
+        let profileImageTapGesture = UITapGestureRecognizer(target: self, action: #selector(profileImageViewTapped))
+        profileImageView.addGestureRecognizer(profileImageTapGesture)
+        profileImageView.isUserInteractionEnabled = true
         return profileImageView
     }()
     
@@ -51,6 +56,7 @@ class ProfileViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
     }
     
     override func viewDidLayoutSubviews() {
@@ -108,6 +114,12 @@ class ProfileViewController: BaseViewController {
         validCheckLabel.text = validResult.validResult
     }
 
+    @objc
+    private func profileImageViewTapped() {
+        let profileImageVC = ProfileImageViewController()
+        profileImageVC.viewType = .profileSetting
+        navigationController?.pushViewController(profileImageVC, animated: true)
+    }
 }
 
 // nicknameTextField 관련 로직
