@@ -124,6 +124,13 @@ enum Constant {
         }
     }
     
+    enum SettingMenu: String, CaseIterable {
+        case wishList = "나의 장바구니 목록"
+        case faq = "자주 묻는 질문"
+        case inquiry = "1:1 문의"
+        case alert = "알림 설정"
+        case secession = "탈퇴하기"
+    }
 }
 
 struct ProfileImage {
