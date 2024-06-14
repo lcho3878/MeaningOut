@@ -14,7 +14,6 @@ class SettingViewController: BaseViewController {
     
     private let settingMenus = Constant.SettingMenu.allCases
 
-    
     private let settingTableView = {
         let settingTableView = UITableView()
         return settingTableView
@@ -83,10 +82,20 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 {
             let profileEditVC = ProfileViewController()
             profileEditVC.viewType = .profileEdit
+            profileEditVC.delegate = self
             navigationController?.pushViewController(profileEditVC, animated: true)
 
         }
         else {}
+    }
+    
+}
+
+extension SettingViewController: ProfileViewControllerDelegate {
+    
+    func updateUI() {
+        print(#function)
+        settingTableView.reloadData()
     }
     
 }

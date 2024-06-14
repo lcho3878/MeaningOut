@@ -49,6 +49,11 @@ class ProfileCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        configureData()
+    }
+    
     override func layoutSubviews() {
         profileImageView.layoutIfNeeded()
         profileImageView.makeCircle()

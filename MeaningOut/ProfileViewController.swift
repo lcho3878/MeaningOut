@@ -8,9 +8,15 @@
 import UIKit
 import SnapKit
 
+protocol ProfileViewControllerDelegate: AnyObject {
+    func updateUI()
+}
+
 class ProfileViewController: BaseViewController {
     
     var viewType: Constant.ViewType!
+    
+    weak var delegate: ProfileViewControllerDelegate?
     
     private lazy var profileImageView = {
         let profileImageView = UIImageView()
@@ -43,6 +49,10 @@ class ProfileViewController: BaseViewController {
         let nicknameTextField = UITextField()
         nicknameTextField.font = Constant.FontSize.contentBold
         nicknameTextField.placeholder = Constant.TextFieldType.nickname.rawValue
+        if viewType == .profileEdit {
+            nicknameTextField.text = User.nickanme
+            configureValidCheckLabel(checkValid(User.nickanme))
+        }
         nicknameTextField.addTarget(self, action: #selector(nicknameTextFieldChanged), for: .editingChanged)
         nicknameTextField.addTarget(self, action: #selector(nicknameTextFieldEndEdit), for: .editingDidEndOnExit)
         return nicknameTextField
@@ -58,7 +68,17 @@ class ProfileViewController: BaseViewController {
     private lazy var completeButton = {
         let completeButton = OrangeButton(buttonType: .complete)
         completeButton.addTarget(self, action: #selector(completeButtonClicked), for: .touchUpInside)
+        completeButton.isHidden = viewType == .profileEdit
         return completeButton
+    }()
+    
+    private lazy var saveButton = {
+        let saveButton = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(saveButtonClikced))
+        saveButton.setTitleTextAttributes([
+            .font: Constant.FontSize.titleBold,
+            .foregroundColor: Constant.AppColor.black
+        ], for: .normal)
+        return saveButton
     }()
     
     override func viewDidLoad() {
@@ -75,6 +95,9 @@ class ProfileViewController: BaseViewController {
     
     override func configureNavigationItem() {
         navigationItem.title = viewType.navigationTitle
+        if viewType == .profileEdit {
+            navigationItem.rightBarButtonItem = saveButton
+        }
     }
     
     override func configureHierarchy() {
@@ -124,7 +147,7 @@ class ProfileViewController: BaseViewController {
 
 }
 
-// @objc func, nickname 안되는데 누르면 토스트 메시지 띄워보기
+// @objc func, nickname 안되는데 누르면 토스트 메시지 띄워보기, profilesetting관련
 extension ProfileViewController {
     @objc
     private func profileImageViewTapped() {
@@ -147,6 +170,19 @@ extension ProfileViewController {
     }
 }
 
+//profileEdit 관련 로직
+extension ProfileViewController {
+    @objc
+    private func saveButtonClikced() {
+        guard let nickname = nicknameTextField.text,
+              checkValid(nickname) == .correct else { return }
+        User.nickanme = nickname
+        User.profileImage = profileImageView.image
+        delegate?.updateUI()
+        navigationController?.popViewController(animated: true)
+    }
+}
+
 // nicknameTextField 관련 로직
 extension ProfileViewController {
     @objc
@@ -162,8 +198,8 @@ extension ProfileViewController {
     }
 
     // 유효성 검사 부분 좀더 다듬을 수 있으면 다듬을 것
-    private func checkValid(_ text: String) -> Constant.NicknameValid {
-        guard text.count >= 2, text.count < 10 else { return .nicknameLength}
+    private func checkValid(_ text: String?) -> Constant.NicknameValid {
+        guard let text = text, text.count >= 2, text.count < 10 else { return .nicknameLength}
         
         let special: [Character] = ["@", "#", "$", "%"]
         let number: [Character] = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
