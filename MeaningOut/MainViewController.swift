@@ -26,6 +26,12 @@ class MainViewController: BaseViewController {
     override func configureLayout() {
         
     }
+    
+    // notification center? 사용 방식도 고려해볼것
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureNavigationItem()
+    }
 
 
 }

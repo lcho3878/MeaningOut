@@ -94,7 +94,6 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
 extension SettingViewController: ProfileViewControllerDelegate {
     
     func updateUI() {
-        print(#function)
         settingTableView.reloadData()
     }
     
