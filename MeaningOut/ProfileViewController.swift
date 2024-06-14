@@ -49,7 +49,11 @@ class ProfileViewController: BaseViewController {
         return validCheckLabel
     }()
     
-    private let completeButton = OrangeButton(buttonType: .complete)
+    private lazy var completeButton = {
+        let completeButton = OrangeButton(buttonType: .complete)
+        completeButton.addTarget(self, action: #selector(completeButtonClicked), for: .touchUpInside)
+        return completeButton
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -111,6 +115,11 @@ class ProfileViewController: BaseViewController {
         validCheckLabel.text = validResult.validResult
     }
 
+
+}
+
+// @objc func, nickname 안되는데 누르면 토스트 메시지 띄워보기
+extension ProfileViewController {
     @objc
     private func profileImageViewTapped() {
         let profileImageVC = ProfileImageViewController()
@@ -118,6 +127,14 @@ class ProfileViewController: BaseViewController {
         profileImageVC.viewType = .profileSetting
         profileImageVC.profileImage = profileImageView.image
         navigationController?.pushViewController(profileImageVC, animated: true)
+    }
+    
+    @objc
+    private func completeButtonClicked() {
+        guard let nickname = nicknameTextField.text,
+              checkValid(nickname) == .correct else { return }
+        User.nickanme = nickname
+        User.profileImage = profileImageView.image
     }
 }
 
