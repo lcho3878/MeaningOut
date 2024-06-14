@@ -25,7 +25,7 @@ enum Constant {
         static let heavyGrayBorder = UIColor(hexCode: "4C4C4C", alpha: 0.5)
     }
     
-    enum ProfileImage {
+    enum ProfileImageUI {
         case main
         case select
         case notSelect
@@ -123,4 +123,8 @@ enum Constant {
         }
     }
     
+}
+
+struct ProfileImage {
+    static let profileImages = (0...11).map { UIImage(named: "profile_\($0)") }
 }

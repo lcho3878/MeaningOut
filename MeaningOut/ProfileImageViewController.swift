@@ -15,7 +15,7 @@ class ProfileImageViewController: BaseViewController {
     private let profileImageView = {
         let profileImageView = UIImageView()
         profileImageView.image = UIImage.profile0
-        profileImageView.layer.borderWidth = Constant.ProfileImage.main.borderWidth
+        profileImageView.layer.borderWidth = Constant.ProfileImageUI.main.borderWidth
         profileImageView.layer.borderColor = Constant.AppColor.orange.cgColor
         profileImageView.layer.masksToBounds = true
         return profileImageView
@@ -96,12 +96,13 @@ extension ProfileImageViewController: UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 12
+        return ProfileImage.profileImages.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileImageCollectionViewCell", for: indexPath) as? ProfileImageCollectionViewCell else { return UICollectionViewCell() }
-        
+        let data = ProfileImage.profileImages[indexPath.row]
+        cell.configureData(data)
         return cell
     }
     
