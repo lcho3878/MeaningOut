@@ -6,18 +6,83 @@
 //
 
 import UIKit
+import SnapKit
 
 class ProfileCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    private let profileImageView = {
+        let profileImageView = UIImageView()
+        profileImageView.layer.borderColor = Constant.ProfileImageUI.main.borderColor
+        profileImageView.layer.borderWidth = Constant.ProfileImageUI.main.borderWidth
+        profileImageView.backgroundColor = .gray
+        return profileImageView
+    }()
+    
+    private let nicknameLabel = {
+        let nicknameLabel = UILabel()
+        nicknameLabel.textColor = Constant.AppColor.black
+        nicknameLabel.font = Constant.FontSize.titleBold
+        return nicknameLabel
+    }()
+    
+    private let dateLabel = {
+        let dateLabel = UILabel()
+        dateLabel.textColor = Constant.AppColor.lightGray
+        dateLabel.font = Constant.FontSize.subtTitle
+        return dateLabel
+    }()
+    
+    private let disclosureImageView = {
+        let disclosureImageView = UIImageView()
+        disclosureImageView.image = UIImage(systemName: "chevron.right")
+        return disclosureImageView
+    }()
+
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        configureHierachy()
+        configureLayout()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        profileImageView.layoutIfNeeded()
+        profileImageView.makeCircle()
+    }
+    
+    private func configureHierachy() {
+        contentView.addSubview(profileImageView)
+        contentView.addSubview(nicknameLabel)
+        contentView.addSubview(dateLabel)
+        contentView.addSubview(disclosureImageView)
+    }
+    
+    private func configureLayout() {
+        
+        profileImageView.snp.makeConstraints {
+            $0.leading.equalTo(contentView.safeAreaLayoutGuide).inset(16)
+            $0.verticalEdges.equalTo(contentView.safeAreaLayoutGuide).inset(32)
+            $0.width.equalTo(profileImageView.snp.height)
+        }
+        
+        nicknameLabel.snp.makeConstraints {
+            $0.leading.equalTo(profileImageView.snp.trailing).offset(16)
+            $0.centerY.equalTo(contentView.safeAreaLayoutGuide).offset(-8)
+        }
+        
+        dateLabel.snp.makeConstraints {
+            $0.leading.equalTo(nicknameLabel)
+            $0.centerY.equalTo(contentView.safeAreaLayoutGuide).offset(12)
+        }
+        
+        disclosureImageView.snp.makeConstraints {
+            $0.trailing.equalTo(contentView.safeAreaLayoutGuide).inset(8)
+            $0.centerY.equalToSuperview()
+        }
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
 
 }
