@@ -12,12 +12,9 @@ class ProfileViewController: BaseViewController {
     
     var viewType: Constant.ViewType!
     
-
-    
-    // 초기 이미지 랜덤 넣어야함
     private lazy var profileImageView = {
         let profileImageView = UIImageView()
-        profileImageView.image = UIImage.profile0
+        profileImageView.image = ProfileImage.profileImages.randomElement()
         profileImageView.layer.borderWidth = Constant.ProfileImageUI.main.borderWidth
         profileImageView.layer.borderColor = Constant.ProfileImageUI.main.borderColor
         profileImageView.layer.masksToBounds = true
@@ -118,6 +115,7 @@ class ProfileViewController: BaseViewController {
     private func profileImageViewTapped() {
         let profileImageVC = ProfileImageViewController()
         profileImageVC.viewType = .profileSetting
+        profileImageVC.profileImage = profileImageView.image
         navigationController?.pushViewController(profileImageVC, animated: true)
     }
 }

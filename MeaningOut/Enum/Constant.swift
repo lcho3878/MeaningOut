@@ -126,5 +126,5 @@ enum Constant {
 }
 
 struct ProfileImage {
-    static let profileImages = (0...11).map { UIImage(named: "profile_\($0)") }
+    static let profileImages = (0...11).compactMap { UIImage(named: "profile_\($0)") }
 }

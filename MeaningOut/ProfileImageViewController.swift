@@ -12,9 +12,11 @@ class ProfileImageViewController: BaseViewController {
     
     var viewType: Constant.ViewType!
     
-    private let profileImageView = {
+    var profileImage: UIImage!
+    
+    private lazy var profileImageView = {
         let profileImageView = UIImageView()
-        profileImageView.image = UIImage.profile0
+        profileImageView.image = profileImage
         profileImageView.layer.borderWidth = Constant.ProfileImageUI.main.borderWidth
         profileImageView.layer.borderColor = Constant.AppColor.orange.cgColor
         profileImageView.layer.masksToBounds = true
