@@ -135,6 +135,8 @@ extension ProfileViewController {
               checkValid(nickname) == .correct else { return }
         User.nickanme = nickname
         User.profileImage = profileImageView.image
+        let tabbarVC = TabBarController()
+        changeRootViewController(tabbarVC)
     }
 }
 
