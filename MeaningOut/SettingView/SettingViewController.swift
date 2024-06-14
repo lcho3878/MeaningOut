@@ -79,5 +79,14 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         return indexPath.section == 0 ? 160 : UITableView.automaticDimension
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            let profileEditVC = ProfileViewController()
+            profileEditVC.viewType = .profileEdit
+            navigationController?.pushViewController(profileEditVC, animated: true)
+
+        }
+        else {}
+    }
     
 }

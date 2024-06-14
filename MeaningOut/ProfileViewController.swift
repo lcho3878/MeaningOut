@@ -14,7 +14,13 @@ class ProfileViewController: BaseViewController {
     
     private lazy var profileImageView = {
         let profileImageView = UIImageView()
-        profileImageView.image = ProfileImage.profileImages.randomElement()
+        if viewType == .profileEdit {
+            profileImageView.image = User.profileImage
+        }
+        else {
+            profileImageView.image = ProfileImage.profileImages.randomElement()
+        }
+
         profileImageView.layer.borderWidth = Constant.ProfileImageUI.main.borderWidth
         profileImageView.layer.borderColor = Constant.ProfileImageUI.main.borderColor
         profileImageView.layer.masksToBounds = true
@@ -124,7 +130,7 @@ extension ProfileViewController {
     private func profileImageViewTapped() {
         let profileImageVC = ProfileImageViewController()
         profileImageVC.delegate = self
-        profileImageVC.viewType = .profileSetting
+        profileImageVC.viewType = viewType
         profileImageVC.profileImage = profileImageView.image
         navigationController?.pushViewController(profileImageVC, animated: true)
     }
