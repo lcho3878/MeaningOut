@@ -18,7 +18,7 @@ class SearchCell: UITableViewCell {
     
     private let clockImageView = {
         let clockImageView = UIImageView()
-        clockImageView.image = Constant.IconImage.clock
+        clockImageView.image = Constant.IconImage.clock?.withTintColor(Constant.AppColor.black, renderingMode: .alwaysOriginal)
         return clockImageView
     }()
     
@@ -30,7 +30,7 @@ class SearchCell: UITableViewCell {
     
     private lazy var deleteButton = {
         let deleteButton = UIButton()
-        deleteButton.setImage(Constant.IconImage.xmark, for: .normal)
+        deleteButton.setImage(Constant.IconImage.xmark?.withTintColor(Constant.AppColor.black, renderingMode: .alwaysOriginal), for: .normal)
         deleteButton.addTarget(self, action: #selector(deleteButtonClicked), for: .touchUpInside)
         return deleteButton
     }()
