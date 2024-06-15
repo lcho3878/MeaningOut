@@ -178,4 +178,14 @@ struct User {
             UserDefaults.standard.set(newValue, forKey: "signupDate")
         }
     }
+    
+    static var searchList: [String] {
+        get {
+            guard let searchList = UserDefaults.standard.array(forKey: "searchList") as? [String] else { return [] }
+            return searchList
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "searchList")
+        }
+    }
 }
