@@ -39,7 +39,7 @@ class ProfileViewController: BaseViewController {
     //카메라 이미지 크기 조정 좀 더 고려해볼 것
     private let cameraImageView = {
         let cameraImageView = UIImageView()
-        cameraImageView.image = UIImage(systemName: "camera.fill")?.withTintColor(Constant.AppColor.white, renderingMode: .alwaysOriginal)
+        cameraImageView.image = Constant.IconImage.cameraFill?.withTintColor(Constant.AppColor.white, renderingMode: .alwaysOriginal)
         cameraImageView.contentMode = .center
         cameraImageView.backgroundColor = Constant.AppColor.orange
         return cameraImageView

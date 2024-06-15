@@ -33,7 +33,7 @@ class ProfileImageViewController: BaseViewController {
 
     private let cameraImageView = {
         let cameraImageView = UIImageView()
-        cameraImageView.image = UIImage(systemName: "camera.fill")?.withTintColor(Constant.AppColor.white, renderingMode: .alwaysOriginal)
+        cameraImageView.image = Constant.IconImage.cameraFill?.withTintColor(Constant.AppColor.white, renderingMode: .alwaysOriginal)
         cameraImageView.contentMode = .center
         cameraImageView.backgroundColor = Constant.AppColor.orange
         return cameraImageView

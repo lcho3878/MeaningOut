@@ -12,7 +12,7 @@ class SearchCell: UITableViewCell {
     
     private let clockImageView = {
         let clockImageView = UIImageView()
-        clockImageView.image = UIImage(systemName: "clock")
+        clockImageView.image = Constant.IconImage.clock
         return clockImageView
     }()
     
@@ -24,7 +24,7 @@ class SearchCell: UITableViewCell {
     
     private let deleteButton = {
         let deleteButton = UIButton()
-        deleteButton.setImage(UIImage(systemName: "xmark"), for: .normal)
+        deleteButton.setImage(Constant.IconImage.xmark, for: .normal)
         return deleteButton
     }()
 

@@ -34,7 +34,7 @@ class ProfileCell: UITableViewCell {
     
     private let disclosureImageView = {
         let disclosureImageView = UIImageView()
-        disclosureImageView.image = UIImage(systemName: "chevron.right")
+        disclosureImageView.image = Constant.IconImage.chevronRight
         return disclosureImageView
     }()
 

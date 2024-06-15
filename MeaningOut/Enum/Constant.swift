@@ -131,6 +131,15 @@ enum Constant {
         case alert = "알림 설정"
         case secession = "탈퇴하기"
     }
+    
+    enum IconImage {
+        static let magnifyingglass = UIImage(systemName: "magnifyingglass")
+        static let person = UIImage(systemName: "person")
+        static let clock = UIImage(systemName: "clock")
+        static let xmark = UIImage(systemName: "xmark")
+        static let chevronRight = UIImage(systemName: "chevron.right")
+        static let cameraFill = UIImage(systemName: "camera.fill")
+    }
 }
 
 struct ProfileImage {
