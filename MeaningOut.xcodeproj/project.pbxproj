@@ -40,6 +40,7 @@
 		542A02762C1D640E00F8BE47 /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A02752C1D640E00F8BE47 /* ProfileImage.swift */; };
 		542A02782C1D641A00F8BE47 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A02772C1D641A00F8BE47 /* User.swift */; };
 		542A027A2C1D680100F8BE47 /* Shopping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A02792C1D680100F8BE47 /* Shopping.swift */; };
+		542A027C2C1D724500F8BE47 /* SearchResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A027B2C1D724500F8BE47 /* SearchResultCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,7 @@
 		542A02752C1D640E00F8BE47 /* ProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
 		542A02772C1D641A00F8BE47 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		542A02792C1D680100F8BE47 /* Shopping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shopping.swift; sourceTree = "<group>"; };
+		542A027B2C1D724500F8BE47 /* SearchResultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 				542A026F2C1D5DDF00F8BE47 /* MainView */,
 				542A02662C1C569100F8BE47 /* SettingView */,
 				542A02722C1D639D00F8BE47 /* SearchResultViewController.swift */,
+				542A027B2C1D724500F8BE47 /* SearchResultCollectionViewCell.swift */,
 				542A022D2C1B534C00F8BE47 /* Assets.xcassets */,
 				542A02322C1B534C00F8BE47 /* Info.plist */,
 				542A023A2C1B538300F8BE47 /* APIKey.swift */,
@@ -301,6 +304,7 @@
 				542A02522C1B5CFB00F8BE47 /* OrangeButton.swift in Sources */,
 				542A023E2C1B55CB00F8BE47 /* BaseViewController.swift in Sources */,
 				542A02762C1D640E00F8BE47 /* ProfileImage.swift in Sources */,
+				542A027C2C1D724500F8BE47 /* SearchResultCollectionViewCell.swift in Sources */,
 				542A02292C1B534B00F8BE47 /* OnboardingViewController.swift in Sources */,
 				542A02652C1C4C1E00F8BE47 /* UICollectionViewCell+Extension.swift in Sources */,
 				542A02502C1B5B7F00F8BE47 /* Constant.swift in Sources */,
