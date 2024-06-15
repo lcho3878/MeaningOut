@@ -49,7 +49,7 @@ class MainViewController: BaseViewController {
     private let allLabel = {
         let allLabel = UILabel()
         allLabel.text = "최근 검색"
-        allLabel.font = Constant.FontSize.contentBold
+        allLabel.font = Constant.FontSize.titleBold
         return allLabel
     }()
     
@@ -168,6 +168,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     private func configureTableView() {
         searchTableView.delegate = self
         searchTableView.dataSource = self
+        searchTableView.register(SearchCell.self, forCellReuseIdentifier: SearchCell.id)
     }
     
     
@@ -176,9 +177,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .value1, reuseIdentifier: "dd")
-        cell.textLabel?.text = list[indexPath.row]
-        cell.textLabel?.textColor = .black
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchCell.id, for: indexPath) as? SearchCell else { return UITableViewCell() }
+        let data = list[indexPath.row]
+        cell.configureData(data)
         return cell
     }
     
