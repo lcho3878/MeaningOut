@@ -30,4 +30,9 @@ struct ShoppingResult: Decodable {
     let start: Int
     let display: Int
     let items: [Shopping]
+    
+    var totlaResult: String {
+        return "\(total.formatted())개의 검색 결과"
+    }
+
 }

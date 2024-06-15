@@ -61,6 +61,18 @@ enum Constant {
     enum ButtonType: String {
         case start = "시작하기"
         case complete = "완료"
+
+    }
+    
+    enum FilterButtonType: String, CaseIterable {
+        case sim = "정확도"
+        case date = "날짜순"
+        case dsc = "가격높은순"
+        case asc = "가격낮은순"
+        
+        var sort: String {
+            return String(describing: self)
+        }
     }
     
     enum TextFieldType: String {
