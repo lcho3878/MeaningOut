@@ -151,6 +151,7 @@ enum Constant {
         static let xmark = UIImage(systemName: "xmark")
         static let chevronRight = UIImage(systemName: "chevron.right")
         static let cameraFill = UIImage(systemName: "camera.fill")
+//        static let cart = UIImage(systemName: "cart")
     }
 }
 

@@ -14,6 +14,8 @@ class SearchResultViewController: BaseViewController {
     
     var query: String!
     
+    private var start = 1
+    
     private var list: [Shopping] = []{
         didSet {
             resultCollectionView.reloadData()
@@ -124,7 +126,9 @@ class SearchResultViewController: BaseViewController {
         guard let url = URL(string: APIKey.shoppingURL) else { return }
         let param: Parameters = [
             "query": query,
-            "sort": sort
+            "sort": sort,
+            "display": 30,
+            "start": start
         ]
         let headers: HTTPHeaders = [
             "X-Naver-Client-id": APIKey.clientId,
@@ -133,8 +137,16 @@ class SearchResultViewController: BaseViewController {
         AF.request(url, parameters: param,headers: headers).responseDecodable(of: ShoppingResult.self) { response in
             switch response.result {
             case .success(let value):
-                self.totalLabel.text = value.totlaResult
-                self.list = value.items
+                if self.start == 1 {
+                    self.totalLabel.text = value.totlaResult
+                    self.list = value.items
+                    guard !self.list.isEmpty else { return }
+                    self.resultCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top , animated: true)
+                }
+                else {
+                    self.list.append(contentsOf: value.items)
+                }
+
             case .failure(let error):
                 print(error)
             }
@@ -145,6 +157,7 @@ class SearchResultViewController: BaseViewController {
 extension SearchResultViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     private func configureCollectionView() {
+        resultCollectionView.prefetchDataSource = self
         resultCollectionView.delegate = self
         resultCollectionView.dataSource = self
         resultCollectionView.register(SearchResultCollectionViewCell.self, forCellWithReuseIdentifier: SearchResultCollectionViewCell.id)
@@ -174,6 +187,20 @@ extension SearchResultViewController: UICollectionViewDelegate, UICollectionView
     
 }
 
+extension SearchResultViewController: UICollectionViewDataSourcePrefetching {
+    
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        for indexPath in indexPaths {
+            if indexPath.row == list.count - 10 , start + 30 <= 1000 {
+                print(#function)
+                start += 30
+                callRequest(query)
+            }
+        }
+    }
+    
+}
+
 //버튼관련 로직
 extension SearchResultViewController {
     
@@ -194,6 +221,7 @@ extension SearchResultViewController {
         buttonList.forEach { $0.isSelected = false }
         sender.isSelected = true
         sort = Constant.FilterButtonType.allCases[sender.tag].sort
+        start = 1
     }
     
 }
