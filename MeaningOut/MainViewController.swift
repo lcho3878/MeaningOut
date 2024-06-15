@@ -10,6 +10,12 @@ import SnapKit
 
 class MainViewController: BaseViewController {
     
+    var list: [String] = []{
+        didSet{
+            searchTableView.reloadData()
+        }
+    }
+    
     private let viewType = Constant.ViewType.main
     
     private let searchBar = {
@@ -33,9 +39,35 @@ class MainViewController: BaseViewController {
         emptyLabel.textAlignment = .center
         return emptyLabel
     }()
+    
+    private let mainView = UIView()
+    
+    private let headerView = UIView()
+    
+    private let allLabel = {
+        let allLabel = UILabel()
+        allLabel.text = "최근 검색"
+        allLabel.font = Constant.FontSize.contentBold
+        return allLabel
+    }()
+    
+    private lazy var deleteButton = {
+        let deleteButton = UIButton()
+        deleteButton.setTitle("전체 삭제", for: .normal)
+        deleteButton.setTitleColor(Constant.AppColor.orange, for: .normal)
+        deleteButton.titleLabel?.font = Constant.FontSize.subtTitle
+        return deleteButton
+    }()
+    
+    private let searchTableView = {
+        let searchTableView = UITableView()
+        return searchTableView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureSearchBar()
+        configureTableView()
     }
     
     override func configureNavigationItem() {
@@ -46,6 +78,11 @@ class MainViewController: BaseViewController {
         view.addSubview(searchBar)
         view.addSubview(emptyImageView)
         view.addSubview(emptyLabel)
+        view.addSubview(mainView)
+        mainView.addSubview(headerView)
+        mainView.addSubview(searchTableView)
+        headerView.addSubview(allLabel)
+        headerView.addSubview(deleteButton)
     }
     
     override func configureLayout() {
@@ -63,6 +100,31 @@ class MainViewController: BaseViewController {
             $0.centerX.equalToSuperview()
             $0.top.equalTo(emptyImageView.snp.bottom)
         }
+        
+        mainView.snp.makeConstraints {
+            $0.top.equalTo(searchBar.snp.bottom)
+            $0.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
+        
+        headerView.snp.makeConstraints {
+            $0.top.horizontalEdges.equalToSuperview()
+            $0.height.equalTo(50)
+        }
+        
+        allLabel.snp.makeConstraints {
+            $0.leading.equalToSuperview().offset(16)
+            $0.centerY.equalToSuperview()
+        }
+        
+        deleteButton.snp.makeConstraints {
+            $0.trailing.equalToSuperview().inset(16)
+            $0.centerY.equalToSuperview()
+        }
+        
+        searchTableView.snp.makeConstraints {
+            $0.top.equalTo(headerView.snp.bottom)
+            $0.horizontalEdges.bottom.equalToSuperview()
+        }
     }
     
     // notification center? 사용 방식도 고려해볼것
@@ -73,3 +135,38 @@ class MainViewController: BaseViewController {
 
 
 }
+
+extension MainViewController: UISearchBarDelegate {
+    
+    private func configureSearchBar() {
+        searchBar.delegate = self
+    }
+    
+    // search 버튼 클릭
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        list.append(searchBar.searchTextField.text!)
+    }
+}
+
+extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    private func configureTableView() {
+        searchTableView.delegate = self
+        searchTableView.dataSource = self
+    }
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return list.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .value1, reuseIdentifier: "dd")
+        cell.textLabel?.text = list[indexPath.row]
+        cell.textLabel?.textColor = .black
+        return cell
+    }
+    
+}
+
+
