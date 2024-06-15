@@ -37,6 +37,8 @@
 		542A026E2C1C60D600F8BE47 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A026D2C1C60D600F8BE47 /* Date+Extension.swift */; };
 		542A02712C1D5DF800F8BE47 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A02702C1D5DF800F8BE47 /* SearchCell.swift */; };
 		542A02732C1D639D00F8BE47 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A02722C1D639D00F8BE47 /* SearchResultViewController.swift */; };
+		542A02762C1D640E00F8BE47 /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A02752C1D640E00F8BE47 /* ProfileImage.swift */; };
+		542A02782C1D641A00F8BE47 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A02772C1D641A00F8BE47 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +71,8 @@
 		542A026D2C1C60D600F8BE47 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		542A02702C1D5DF800F8BE47 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		542A02722C1D639D00F8BE47 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
+		542A02752C1D640E00F8BE47 /* ProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
+		542A02772C1D641A00F8BE47 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				542A02532C1B630700F8BE47 /* Resource */,
+				542A02742C1D63FE00F8BE47 /* Struct */,
 				542A024C2C1B5B1400F8BE47 /* Extension */,
 				542A024B2C1B5B0C00F8BE47 /* Enum */,
 				542A023F2C1B562B00F8BE47 /* Protocol */,
@@ -192,6 +197,15 @@
 			path = MainView;
 			sourceTree = "<group>";
 		};
+		542A02742C1D63FE00F8BE47 /* Struct */ = {
+			isa = PBXGroup;
+			children = (
+				542A02752C1D640E00F8BE47 /* ProfileImage.swift */,
+				542A02772C1D641A00F8BE47 /* User.swift */,
+			);
+			path = Struct;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -273,6 +287,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				542A02782C1D641A00F8BE47 /* User.swift in Sources */,
 				542A02632C1C4BF100F8BE47 /* Reusable.swift in Sources */,
 				542A026E2C1C60D600F8BE47 /* Date+Extension.swift in Sources */,
 				542A02592C1C15B400F8BE47 /* ProfileImageViewController.swift in Sources */,
@@ -281,6 +296,7 @@
 				542A02612C1C4AF700F8BE47 /* SettingViewController.swift in Sources */,
 				542A02522C1B5CFB00F8BE47 /* OrangeButton.swift in Sources */,
 				542A023E2C1B55CB00F8BE47 /* BaseViewController.swift in Sources */,
+				542A02762C1D640E00F8BE47 /* ProfileImage.swift in Sources */,
 				542A02292C1B534B00F8BE47 /* OnboardingViewController.swift in Sources */,
 				542A02652C1C4C1E00F8BE47 /* UICollectionViewCell+Extension.swift in Sources */,
 				542A02502C1B5B7F00F8BE47 /* Constant.swift in Sources */,
