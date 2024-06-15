@@ -8,7 +8,13 @@
 import UIKit
 import SnapKit
 
+protocol SearchCellDelegate: AnyObject {
+    func removeElement(_ index: Int)
+}
+
 class SearchCell: UITableViewCell {
+    
+    weak var delegate: SearchCellDelegate?
     
     private let clockImageView = {
         let clockImageView = UIImageView()
@@ -22,9 +28,10 @@ class SearchCell: UITableViewCell {
         return titleLabel
     }()
     
-    private let deleteButton = {
+    private lazy var deleteButton = {
         let deleteButton = UIButton()
         deleteButton.setImage(Constant.IconImage.xmark, for: .normal)
+        deleteButton.addTarget(self, action: #selector(deleteButtonClicked), for: .touchUpInside)
         return deleteButton
     }()
 
@@ -69,4 +76,12 @@ class SearchCell: UITableViewCell {
         titleLabel.text = data
     }
     
+}
+
+extension SearchCell {
+    @objc
+    private func deleteButtonClicked() {
+        let index = tag
+        delegate?.removeElement(index)
+    }
 }

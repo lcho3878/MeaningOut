@@ -180,9 +180,18 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchCell.id, for: indexPath) as? SearchCell else { return UITableViewCell() }
         let data = list[indexPath.row]
         cell.configureData(data)
+        cell.tag = indexPath.row
+        cell.delegate = self
         return cell
     }
     
+}
+
+extension MainViewController: SearchCellDelegate {
+    func removeElement(_ index: Int) {
+        list.remove(at: index)
+    }
+
 }
 
 
