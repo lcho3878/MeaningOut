@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class SearchResultCollectionViewCell: UICollectionViewCell {
     
@@ -85,6 +86,8 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
     }
     
     func configureData(_ data: Shopping) {
+        let url = URL(string: data.image)
+        itemImageView.kf.setImage(with: url)
         mallLabel.text = data.mallName
         titleLabel.text = data.title
         priceLabel.text = data.lprice
