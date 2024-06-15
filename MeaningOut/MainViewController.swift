@@ -10,8 +10,10 @@ import SnapKit
 
 class MainViewController: BaseViewController {
     
-    var list: [String] = []{
+    var list = User.searchList{
         didSet{
+            User.searchList = list
+            configureIsHidden()
             searchTableView.reloadData()
         }
     }
@@ -56,6 +58,7 @@ class MainViewController: BaseViewController {
         deleteButton.setTitle("전체 삭제", for: .normal)
         deleteButton.setTitleColor(Constant.AppColor.orange, for: .normal)
         deleteButton.titleLabel?.font = Constant.FontSize.subtTitle
+        deleteButton.addTarget(self, action: #selector(deleteButtonClicked), for: .touchUpInside)
         return deleteButton
     }()
     
@@ -68,6 +71,7 @@ class MainViewController: BaseViewController {
         super.viewDidLoad()
         configureSearchBar()
         configureTableView()
+        configureIsHidden()
     }
     
     override func configureNavigationItem() {
@@ -133,7 +137,17 @@ class MainViewController: BaseViewController {
         configureNavigationItem()
     }
 
+    private func configureIsHidden() {
+        mainView.isHidden = list.isEmpty
+    }
+}
 
+//objc func
+extension MainViewController {
+    @objc
+    private func deleteButtonClicked() {
+        list.removeAll()
+    }
 }
 
 extension MainViewController: UISearchBarDelegate {
@@ -145,6 +159,7 @@ extension MainViewController: UISearchBarDelegate {
     // search 버튼 클릭
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         list.append(searchBar.searchTextField.text!)
+        searchBar.searchTextField.text = ""
     }
 }
 
