@@ -185,6 +185,12 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let searchReulstVC = SearchResultViewController()
+        searchReulstVC.query = list[indexPath.row]
+        navigationController?.pushViewController(searchReulstVC, animated: true)
+    }
+    
 }
 
 extension MainViewController: SearchCellDelegate {
