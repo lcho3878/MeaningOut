@@ -41,6 +41,7 @@
 		542A02782C1D641A00F8BE47 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A02772C1D641A00F8BE47 /* User.swift */; };
 		542A027A2C1D680100F8BE47 /* Shopping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A02792C1D680100F8BE47 /* Shopping.swift */; };
 		542A027C2C1D724500F8BE47 /* SearchResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A027B2C1D724500F8BE47 /* SearchResultCollectionViewCell.swift */; };
+		542A02802C1DB19D00F8BE47 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A027F2C1DB19D00F8BE47 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +78,7 @@
 		542A02772C1D641A00F8BE47 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		542A02792C1D680100F8BE47 /* Shopping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shopping.swift; sourceTree = "<group>"; };
 		542A027B2C1D724500F8BE47 /* SearchResultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCollectionViewCell.swift; sourceTree = "<group>"; };
+		542A027F2C1DB19D00F8BE47 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 				542A02662C1C569100F8BE47 /* SettingView */,
 				542A02722C1D639D00F8BE47 /* SearchResultViewController.swift */,
 				542A027B2C1D724500F8BE47 /* SearchResultCollectionViewCell.swift */,
+				542A027F2C1DB19D00F8BE47 /* DetailViewController.swift */,
 				542A022D2C1B534C00F8BE47 /* Assets.xcassets */,
 				542A02322C1B534C00F8BE47 /* Info.plist */,
 				542A023A2C1B538300F8BE47 /* APIKey.swift */,
@@ -302,6 +305,7 @@
 				542A024E2C1B5B2200F8BE47 /* UIColor+Extension.swift in Sources */,
 				542A02612C1C4AF700F8BE47 /* SettingViewController.swift in Sources */,
 				542A02522C1B5CFB00F8BE47 /* Button.swift in Sources */,
+				542A02802C1DB19D00F8BE47 /* DetailViewController.swift in Sources */,
 				542A023E2C1B55CB00F8BE47 /* BaseViewController.swift in Sources */,
 				542A02762C1D640E00F8BE47 /* ProfileImage.swift in Sources */,
 				542A027C2C1D724500F8BE47 /* SearchResultCollectionViewCell.swift in Sources */,
