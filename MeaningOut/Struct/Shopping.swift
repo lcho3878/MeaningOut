@@ -26,6 +26,18 @@ struct Shopping: Decodable {
         guard let isLike = User.wishList[productId] else { return false }
         return isLike
     }
+    
+    var cleanTitle: String {
+        var cleanTitle = title
+        cleanTitle = cleanTitle.replacingOccurrences(of: "<b>", with: "")
+        cleanTitle = cleanTitle.replacingOccurrences(of: "</b>", with: "")
+        return cleanTitle
+    }
+    
+    var price: String {
+        guard let price = Int(lprice) else { return ""}
+        return "\(price.formatted())원"
+    }
 }
 
 struct ShoppingResult: Decodable {

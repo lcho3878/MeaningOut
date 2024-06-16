@@ -111,8 +111,8 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
         let url = URL(string: data.image)
         itemImageView.kf.setImage(with: url)
         mallLabel.text = data.mallName
-        titleLabel.text = data.title
-        priceLabel.text = data.lprice
+        titleLabel.text = data.cleanTitle
+        priceLabel.text = data.price
         wishButton.setImage(data.isLike ? UIImage.likeSelected : UIImage.likeUnselected, for: .normal)
         wishButton.backgroundColor = data.isLike ? Constant.AppColor.white : Constant.AppColor.lightGrayBorder
     }

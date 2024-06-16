@@ -38,7 +38,7 @@ class DetailViewController: BaseViewController {
     }
     
     override func configureNavigationItem() {
-        navigationItem.title = data.title
+        navigationItem.title = data.cleanTitle
         navigationItem.rightBarButtonItem = rightBarButton
     }
 
