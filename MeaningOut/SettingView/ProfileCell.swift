@@ -34,7 +34,7 @@ class ProfileCell: UITableViewCell {
     
     private let disclosureImageView = {
         let disclosureImageView = UIImageView()
-        disclosureImageView.image = Constant.IconImage.chevronRight
+        disclosureImageView.image = Constant.IconImage.chevronRight?.withTintColor(Constant.AppColor.middleGray, renderingMode: .alwaysOriginal)
         return disclosureImageView
     }()
 
