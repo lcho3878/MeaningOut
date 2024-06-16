@@ -137,6 +137,12 @@ class MainViewController: BaseViewController {
     private func configureIsHidden() {
         mainView.isHidden = list.isEmpty
     }
+    
+    private func pushViewController(_ query: String) {
+        let searchResultVC = SearchResultViewController()
+        searchResultVC.query = query
+        navigationController?.pushViewController(searchResultVC, animated: true)
+    }
 }
 
 // 버튼 관련 로직
@@ -154,12 +160,10 @@ extension MainViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let text = searchBar.searchTextField.text else { return }
-        list.append(text)
+        guard let query = searchBar.searchTextField.text else { return }
+        list.append(query)
         searchBar.resignFirstResponder()
-        let searchResultVC = SearchResultViewController()
-        searchResultVC.query = text
-        navigationController?.pushViewController(searchResultVC, animated: true)
+        pushViewController(query)
     }
 }
 
@@ -186,9 +190,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let searchReulstVC = SearchResultViewController()
-        searchReulstVC.query = list[indexPath.row]
-        navigationController?.pushViewController(searchReulstVC, animated: true)
+        let query = list[indexPath.row]
+        pushViewController(query)
     }
     
 }
