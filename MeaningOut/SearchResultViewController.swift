@@ -7,7 +7,6 @@
 
 import UIKit
 
-import Alamofire
 import SnapKit
 
 class SearchResultViewController: BaseViewController {
@@ -26,7 +25,7 @@ class SearchResultViewController: BaseViewController {
     
     private var sort = Constant.FilterButtonType.sim.sort {
         didSet{
-            callRequest(query)
+            callRequest()
         }
     }
     
@@ -69,7 +68,7 @@ class SearchResultViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        callRequest(query)
+        callRequest()
         configureCollectionView()
         configureButton()
         configureSelectedButton()
@@ -124,33 +123,16 @@ class SearchResultViewController: BaseViewController {
         }
     }
     
-    private func callRequest(_ query: String) {
-        guard let url = URL(string: NaverAPI.ParamInfoItem.shoppingURL) else { return }
-        let param: Parameters = [
-            NaverAPI.ParamInfoItem.query.rawValue: query,
-            NaverAPI.ParamInfoItem.sort.rawValue: sort,
-            NaverAPI.ParamInfoItem.display.rawValue: display,
-            NaverAPI.ParamInfoItem.start.rawValue: start
-        ]
-        let headers: HTTPHeaders = [
-            NaverAPI.HeaderInfoItem.clientID.rawValue: APIKey.clientId,
-            NaverAPI.HeaderInfoItem.secretKey.rawValue: APIKey.clientSecret
-        ]
-        AF.request(url, parameters: param,headers: headers).responseDecodable(of: ShoppingResult.self) { response in
-            switch response.result {
-            case .success(let value):
-                if self.start == 1 {
-                    self.totalLabel.text = value.totlaResult
-                    self.list = value.items
-                    guard !self.list.isEmpty else { return }
-                    self.resultCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top , animated: true)
-                }
-                else {
-                    self.list.append(contentsOf: value.items)
-                }
-
-            case .failure(let error):
-                print(error)
+    private func callRequest() {
+        NaverAPI.callRequest(query: query, sort: sort, display: display, start: start) { value in
+            if self.start == 1 {
+                self.totalLabel.text = value.totlaResult
+                self.list = value.items
+                guard !self.list.isEmpty else { return }
+                self.resultCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top , animated: true)
+            }
+            else {
+                self.list.append(contentsOf: value.items)
             }
         }
     }
@@ -199,7 +181,7 @@ extension SearchResultViewController: UICollectionViewDataSourcePrefetching {
         for indexPath in indexPaths {
             if indexPath.row == list.count - 10 , start + display <= 1000 {
                 start += display
-                callRequest(query)
+                callRequest()
             }
         }
     }
