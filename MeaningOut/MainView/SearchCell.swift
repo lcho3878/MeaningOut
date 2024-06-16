@@ -78,6 +78,7 @@ class SearchCell: UITableViewCell {
     
 }
 
+//버튼 관련 로직
 extension SearchCell {
     @objc
     private func deleteButtonClicked() {

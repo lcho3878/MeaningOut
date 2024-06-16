@@ -21,7 +21,6 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
     
     private let itemImageView = {
         let itemImageView = UIImageView()
-        itemImageView.backgroundColor = .black
         itemImageView.contentMode = .scaleAspectFill
         itemImageView.clipsToBounds = true
         return itemImageView
@@ -78,6 +77,7 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(titleLabel)
         contentView.addSubview(priceLabel)
     }
+    
     private func configureLayout() {
         
         itemImageView.snp.makeConstraints {

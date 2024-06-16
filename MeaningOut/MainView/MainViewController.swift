@@ -62,10 +62,7 @@ class MainViewController: BaseViewController {
         return deleteButton
     }()
     
-    private let searchTableView = {
-        let searchTableView = UITableView()
-        return searchTableView
-    }()
+    private let searchTableView = UITableView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -142,7 +139,7 @@ class MainViewController: BaseViewController {
     }
 }
 
-//objc func
+// 버튼 관련 로직
 extension MainViewController {
     @objc
     private func deleteButtonClicked() {
@@ -156,7 +153,6 @@ extension MainViewController: UISearchBarDelegate {
         searchBar.delegate = self
     }
     
-    // search 버튼 클릭
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.searchTextField.text else { return }
         list.append(text)

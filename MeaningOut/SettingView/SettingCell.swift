@@ -26,7 +26,6 @@ class SettingCell: UITableViewCell {
     
     private let wishListLabel = {
         let wishListLabel = UILabel()
-        wishListLabel.text = "18개의 상품"
         wishListLabel.isHidden = true
         return wishListLabel
     }()

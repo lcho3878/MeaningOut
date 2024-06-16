@@ -14,10 +14,7 @@ class SettingViewController: BaseViewController {
     
     private let settingMenus = Constant.SettingMenu.allCases
 
-    private let settingTableView = {
-        let settingTableView = UITableView()
-        return settingTableView
-    }()
+    private let settingTableView = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()

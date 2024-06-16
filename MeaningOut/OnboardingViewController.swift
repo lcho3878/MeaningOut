@@ -65,6 +65,7 @@ class OnboardingViewController: BaseViewController  {
 
 }
 
+// 버튼관련 로직
 extension OnboardingViewController {
     @objc
     private func startButtonClicked() {

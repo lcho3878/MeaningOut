@@ -25,9 +25,7 @@ class DetailViewController: BaseViewController {
     private let webView = WKWebView()
     
     private lazy var rightBarButton = {
-        let rightBarButton = UIBarButtonItem()
-        rightBarButton.target = self
-        rightBarButton.action = #selector(barButtonClick)
+        let rightBarButton = UIBarButtonItem(title: nil, style: .plain, target: self, action: #selector(barButtonClick))
         return rightBarButton
     }()
     

@@ -12,7 +12,6 @@ class ProfileImageCollectionViewCell: UICollectionViewCell {
     
     private let profileImageView = {
         let view = UIImageView()
-        view.image = UIImage.profile1
         view.clipsToBounds = true
         view.layer.borderColor = Constant.ProfileImageUI.notSelect.borderColor
         view.layer.borderWidth = Constant.ProfileImageUI.notSelect.borderWidth

@@ -42,6 +42,7 @@
 		542A027A2C1D680100F8BE47 /* Shopping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A02792C1D680100F8BE47 /* Shopping.swift */; };
 		542A027C2C1D724500F8BE47 /* SearchResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A027B2C1D724500F8BE47 /* SearchResultCollectionViewCell.swift */; };
 		542A02802C1DB19D00F8BE47 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A027F2C1DB19D00F8BE47 /* DetailViewController.swift */; };
+		542A02822C1EFF2B00F8BE47 /* NaverAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A02812C1EFF2B00F8BE47 /* NaverAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +80,7 @@
 		542A02792C1D680100F8BE47 /* Shopping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shopping.swift; sourceTree = "<group>"; };
 		542A027B2C1D724500F8BE47 /* SearchResultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCollectionViewCell.swift; sourceTree = "<group>"; };
 		542A027F2C1DB19D00F8BE47 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		542A02812C1EFF2B00F8BE47 /* NaverAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				542A024F2C1B5B7F00F8BE47 /* Constant.swift */,
+				542A02812C1EFF2B00F8BE47 /* NaverAPI.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				542A02502C1B5B7F00F8BE47 /* Constant.swift in Sources */,
 				542A02252C1B534B00F8BE47 /* AppDelegate.swift in Sources */,
 				542A026C2C1C5CF700F8BE47 /* SettingCell.swift in Sources */,
+				542A02822C1EFF2B00F8BE47 /* NaverAPI.swift in Sources */,
 				542A026A2C1C581500F8BE47 /* UITableViewCell+Extension.swift in Sources */,
 				542A023B2C1B538300F8BE47 /* APIKey.swift in Sources */,
 				542A025F2C1C3DE600F8BE47 /* MainViewController.swift in Sources */,

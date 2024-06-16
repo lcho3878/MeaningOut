@@ -16,6 +16,8 @@ class SearchResultViewController: BaseViewController {
     
     private var start = 1
     
+    private var display = 30
+    
     private var list: [Shopping] = []{
         didSet {
             resultCollectionView.reloadData()
@@ -123,16 +125,16 @@ class SearchResultViewController: BaseViewController {
     }
     
     private func callRequest(_ query: String) {
-        guard let url = URL(string: APIKey.shoppingURL) else { return }
+        guard let url = URL(string: NaverAPI.ParamInfoItem.shoppingURL) else { return }
         let param: Parameters = [
-            "query": query,
-            "sort": sort,
-            "display": 30,
-            "start": start
+            NaverAPI.ParamInfoItem.query.rawValue: query,
+            NaverAPI.ParamInfoItem.sort.rawValue: sort,
+            NaverAPI.ParamInfoItem.display.rawValue: display,
+            NaverAPI.ParamInfoItem.start.rawValue: start
         ]
         let headers: HTTPHeaders = [
-            "X-Naver-Client-id": APIKey.clientId,
-            "X-Naver-Client-Secret": APIKey.clientSecret
+            NaverAPI.HeaderInfoItem.clientID.rawValue: APIKey.clientId,
+            NaverAPI.HeaderInfoItem.secretKey.rawValue: APIKey.clientSecret
         ]
         AF.request(url, parameters: param,headers: headers).responseDecodable(of: ShoppingResult.self) { response in
             switch response.result {
@@ -195,8 +197,8 @@ extension SearchResultViewController: UICollectionViewDataSourcePrefetching {
     
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         for indexPath in indexPaths {
-            if indexPath.row == list.count - 10 , start + 30 <= 1000 {
-                start += 30
+            if indexPath.row == list.count - 10 , start + display <= 1000 {
+                start += display
                 callRequest(query)
             }
         }
