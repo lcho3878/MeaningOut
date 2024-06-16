@@ -196,7 +196,6 @@ extension SearchResultViewController: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         for indexPath in indexPaths {
             if indexPath.row == list.count - 10 , start + 30 <= 1000 {
-                print(#function)
                 start += 30
                 callRequest(query)
             }

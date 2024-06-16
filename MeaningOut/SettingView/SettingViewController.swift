@@ -24,6 +24,11 @@ class SettingViewController: BaseViewController {
         configureTableView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        settingTableView.reloadRows(at: [IndexPath(row: 0, section: 1)], with: .automatic)
+    }
+    
     override func configureNavigationItem() {
         navigationItem.title = viewTyle.navigationTitle
     }
@@ -69,7 +74,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingCell.id, for: indexPath) as? SettingCell else { return UITableViewCell() }
             let data = settingMenus[indexPath.row]
-            cell.configureData(data.rawValue)
+            cell.configureData(data)
             return cell
         }
     }
@@ -86,7 +91,9 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(profileEditVC, animated: true)
 
         }
-        else {}
+        else {
+            
+        }
     }
     
 }

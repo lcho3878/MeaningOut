@@ -69,6 +69,10 @@ struct User {
         }
     }
     
+    static var wishListCountLabelText: String {
+        return "\(wishList.count)개의 상품"
+    }
+    
     static func updateWishList(_ productId: String?) {
         guard let productId else { return }
         if let isLike = User.wishList[productId] {
