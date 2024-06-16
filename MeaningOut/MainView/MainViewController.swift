@@ -158,8 +158,12 @@ extension MainViewController: UISearchBarDelegate {
     
     // search 버튼 클릭
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        list.append(searchBar.searchTextField.text!)
-        searchBar.searchTextField.text = ""
+        guard let text = searchBar.searchTextField.text else { return }
+        list.append(text)
+        searchBar.resignFirstResponder()
+        let searchResultVC = SearchResultViewController()
+        searchResultVC.query = text
+        navigationController?.pushViewController(searchResultVC, animated: true)
     }
 }
 

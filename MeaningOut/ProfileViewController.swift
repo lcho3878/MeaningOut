@@ -54,7 +54,6 @@ class ProfileViewController: BaseViewController {
             configureValidCheckLabel(checkValid(User.nickanme))
         }
         nicknameTextField.addTarget(self, action: #selector(nicknameTextFieldChanged), for: .editingChanged)
-        nicknameTextField.addTarget(self, action: #selector(nicknameTextFieldEndEdit), for: .editingDidEndOnExit)
         return nicknameTextField
     }()
     
@@ -189,11 +188,6 @@ extension ProfileViewController {
     private func nicknameTextFieldChanged(_ sender: UITextField) {
         guard let nickname = nicknameTextField.text else { return }
         configureValidCheckLabel(checkValid(nickname))
-
-    }
-    
-    @objc
-    private func nicknameTextFieldEndEdit(_ sender: UITextField) {
 
     }
 
