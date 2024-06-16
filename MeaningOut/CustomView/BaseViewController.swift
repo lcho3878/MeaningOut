@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Toast
 
 class BaseViewController: UIViewController, CodeBasable {
     /*
@@ -38,6 +39,12 @@ class BaseViewController: UIViewController, CodeBasable {
         let sceneDelegate = windowScene?.delegate as? SceneDelegate
         sceneDelegate?.window?.rootViewController = rootViewController
         sceneDelegate?.window?.makeKeyAndVisible()
+    }
+    
+    func showToast(_ content: String?) {
+        var toastStyle = ToastStyle()
+        toastStyle.backgroundColor = Constant.AppColor.orange
+        view.makeToast(content, duration: 2, position: .bottom, style: toastStyle)
     }
     
 }

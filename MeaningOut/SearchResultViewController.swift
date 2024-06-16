@@ -126,7 +126,7 @@ class SearchResultViewController: BaseViewController {
     private func callRequest() {
         NaverAPI.callRequest(query: query, sort: sort, display: display, start: start) { value, error in
             guard error == nil else {
-                self.view.makeToast(error?.localizedDescription)
+                self.showToast(error?.localizedDescription)
                 return
             }
             guard let value else { return }

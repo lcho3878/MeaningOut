@@ -143,7 +143,6 @@ class ProfileViewController: BaseViewController {
         validCheckLabel.text = validResult.validResult
     }
 
-
 }
 
 // @objc func, nickname 안되는데 누르면 토스트 메시지 띄워보기, profilesetting관련
@@ -160,7 +159,10 @@ extension ProfileViewController {
     @objc
     private func completeButtonClicked() {
         guard let nickname = nicknameTextField.text,
-              checkValid(nickname) == .correct else { return }
+              checkValid(nickname) == .correct else {
+            showToast("사용할 수 있는 닉네임이 아닙니다.\n다시 한번 확인해주세요.")
+            return
+        }
         User.nickanme = nickname
         User.profileImage = profileImageView.image
         User.signupDate = Date().dateString("yyyy.MM.dd")
@@ -174,7 +176,10 @@ extension ProfileViewController {
     @objc
     private func saveButtonClikced() {
         guard let nickname = nicknameTextField.text,
-              checkValid(nickname) == .correct else { return }
+              checkValid(nickname) == .correct else { 
+            showToast("사용할 수 있는 닉네임이 아닙니다.\n다시 한번 확인해주세요.")
+            return
+        }
         User.nickanme = nickname
         User.profileImage = profileImageView.image
         delegate?.updateUI()
