@@ -26,7 +26,6 @@ class DetailViewController: BaseViewController {
     
     private lazy var rightBarButton = {
         let rightBarButton = UIBarButtonItem()
-        rightBarButton.image = Constant.IconImage.cartFill?.withTintColor(.black, renderingMode: .alwaysOriginal)
         rightBarButton.target = self
         rightBarButton.action = #selector(barButtonClick)
         return rightBarButton
@@ -65,8 +64,7 @@ class DetailViewController: BaseViewController {
 extension DetailViewController {
     
     private func configureBarButtonImage() {
-        let iconImage = Constant.IconImage.cartFill?.withTintColor(data.isLike ? Constant.AppColor.black : Constant.AppColor.lightGray, renderingMode: .alwaysOriginal)
-        rightBarButton.image = iconImage
+        rightBarButton.image = (data.isLike ? UIImage.likeSelected : UIImage.likeUnselected).withRenderingMode(.alwaysOriginal)
     }
     
     @objc

@@ -30,6 +30,7 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
     private lazy var wishButton = {
         let wishButton = UIButton()
         wishButton.addTarget(self, action: #selector(wishButtonCliekd), for: .touchUpInside)
+        wishButton.layer.cornerRadius = 4
         return wishButton
     }()
     
@@ -112,8 +113,7 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
         mallLabel.text = data.mallName
         titleLabel.text = data.title
         priceLabel.text = data.lprice
-        let iconImage = Constant.IconImage.cartFill?.withTintColor(data.isLike ? Constant.AppColor.black : Constant.AppColor.white, renderingMode: .alwaysOriginal)
-        wishButton.setImage(iconImage, for: .normal)
+        wishButton.setImage(data.isLike ? UIImage.likeSelected : UIImage.likeUnselected, for: .normal)
         wishButton.backgroundColor = data.isLike ? Constant.AppColor.white : Constant.AppColor.lightGrayBorder
     }
     
