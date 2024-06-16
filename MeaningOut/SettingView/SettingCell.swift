@@ -69,7 +69,7 @@ class SettingCell: UITableViewCell {
     func configureData(_ data: Constant.SettingMenu) {
         titleLabel.text = data.rawValue
         guard data == .wishList else { return }
-        wishListLabel.text = User.wishListCountLabelText
+        wishListLabel.attributedText = User.wishListCountLabelText
         wishListLabel.isHidden = false
         cartImageView.isHidden = false
     }

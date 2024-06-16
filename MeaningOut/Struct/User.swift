@@ -69,8 +69,13 @@ struct User {
         }
     }
     
-    static var wishListCountLabelText: String {
-        return "\(wishList.count)개의 상품"
+    static var wishListCountLabelText: NSAttributedString {
+        let string = "\(wishList.count)개"
+        let attributedString = NSMutableAttributedString(string: string)
+        attributedString.addAttribute(.font, value: Constant.FontSize.titleBold, range: NSRange(location: 0, length: string.count))
+        let subString = NSAttributedString(string: "의 상품")
+        attributedString.append(subString)
+        return attributedString
     }
     
     static func updateWishList(_ productId: String?) {
