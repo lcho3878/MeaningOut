@@ -92,7 +92,18 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
 
         }
         else {
-            
+            guard indexPath.row == 4 else { return }
+            let alert = UIAlertController(title: "탈퇴하기", message: "탈퇴를 하면 데이터가 모두 초기화됩니다. 탈퇴 하시겠습니까?", preferredStyle: .alert)
+            let comfirm = UIAlertAction(title: "확인", style: .destructive)  { _ in
+                User.resetUserDate()
+                let onboardVC = OnboardingViewController()
+                let rootVC = UINavigationController(rootViewController: onboardVC)
+                self.changeRootViewController(rootVC)
+            }
+            let cancel = UIAlertAction(title: "취소", style: .cancel)
+            alert.addAction(comfirm)
+            alert.addAction(cancel)
+            present(alert, animated: true)
         }
     }
     

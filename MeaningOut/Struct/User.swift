@@ -82,4 +82,10 @@ struct User {
             User.wishList[productId] = true
         }
     }
+    
+    static func resetUserDate() {
+        for key in UserDefaults.standard.dictionaryRepresentation().keys {
+            UserDefaults.standard.removeObject(forKey: key)
+        }
+    }
 }
