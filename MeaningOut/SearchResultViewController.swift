@@ -173,6 +173,8 @@ extension SearchResultViewController: UICollectionViewDelegate, UICollectionView
         guard let  cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchResultCollectionViewCell.id, for: indexPath) as? SearchResultCollectionViewCell else { return UICollectionViewCell() }
         let data = list[indexPath.row]
         cell.configureData(data)
+        cell.tag = indexPath.row
+        cell.delegate = self
         return cell
         
     }
@@ -181,6 +183,8 @@ extension SearchResultViewController: UICollectionViewDelegate, UICollectionView
         let data = list[indexPath.row]
         let detailVC = DetailViewController()
         detailVC.data = data
+        detailVC.row = indexPath.row
+        detailVC.delegate = self
         navigationController?.pushViewController(detailVC, animated: true)
     }
     
@@ -222,6 +226,22 @@ extension SearchResultViewController {
         sender.isSelected = true
         sort = Constant.FilterButtonType.allCases[sender.tag].sort
         start = 1
+    }
+    
+}
+
+extension SearchResultViewController: DetailViewControllerDelegate {
+    
+    func updateUI(_ row: Int) {
+        resultCollectionView.reloadItems(at: [IndexPath(row: row, section: 0)])
+    }
+    
+}
+
+extension SearchResultViewController: SearchResultCollectionViewCellDelegate {
+    
+    func reloadData(_ row: Int) {
+        resultCollectionView.reloadItems(at: [IndexPath(row: row, section: 0)])
     }
     
 }

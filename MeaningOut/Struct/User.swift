@@ -58,4 +58,24 @@ struct User {
             UserDefaults.standard.set(newValue, forKey: "searchList")
         }
     }
+    
+    static var wishList: [String: Bool] {
+        get {
+            guard let wishList = UserDefaults.standard.dictionary(forKey: "wishList") as? [String: Bool] else { return [:] }
+            return wishList
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "wishList")
+        }
+    }
+    
+    static func updateWishList(_ productId: String?) {
+        guard let productId else { return }
+        if let isLike = User.wishList[productId] {
+            User.wishList.removeValue(forKey: productId)
+        }
+        else {
+            User.wishList[productId] = true
+        }
+    }
 }

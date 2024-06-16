@@ -9,7 +9,15 @@ import UIKit
 import SnapKit
 import Kingfisher
 
+protocol SearchResultCollectionViewCellDelegate: AnyObject {
+    func reloadData(_ row: Int)
+}
+
 class SearchResultCollectionViewCell: UICollectionViewCell {
+    
+    weak var delegate: SearchResultCollectionViewCellDelegate?
+    
+    var productId: String?
     
     private let itemImageView = {
         let itemImageView = UIImageView()
@@ -17,6 +25,12 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
         itemImageView.contentMode = .scaleAspectFill
         itemImageView.clipsToBounds = true
         return itemImageView
+    }()
+    
+    private lazy var wishButton = {
+        let wishButton = UIButton()
+        wishButton.addTarget(self, action: #selector(wishButtonCliekd), for: .touchUpInside)
+        return wishButton
     }()
     
     private let mallLabel = {
@@ -58,6 +72,7 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
     
     private func configureHierarchy() {
         contentView.addSubview(itemImageView)
+        contentView.addSubview(wishButton)
         contentView.addSubview(mallLabel)
         contentView.addSubview(titleLabel)
         contentView.addSubview(priceLabel)
@@ -67,6 +82,11 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
         itemImageView.snp.makeConstraints {
             $0.top.horizontalEdges.equalToSuperview()
             $0.height.equalToSuperview().multipliedBy(0.7)
+        }
+        
+        wishButton.snp.makeConstraints {
+            $0.bottom.trailing.equalTo(itemImageView).inset(16)
+            $0.size.equalTo(32)
         }
         
         mallLabel.snp.makeConstraints {
@@ -86,11 +106,23 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
     }
     
     func configureData(_ data: Shopping) {
+        productId = data.productId
         let url = URL(string: data.image)
         itemImageView.kf.setImage(with: url)
         mallLabel.text = data.mallName
         titleLabel.text = data.title
         priceLabel.text = data.lprice
+        let iconImage = Constant.IconImage.cartFill?.withTintColor(data.isLike ? Constant.AppColor.black : Constant.AppColor.white, renderingMode: .alwaysOriginal)
+        wishButton.setImage(iconImage, for: .normal)
+        wishButton.backgroundColor = data.isLike ? Constant.AppColor.white : Constant.AppColor.lightGrayBorder
     }
     
+}
+
+extension SearchResultCollectionViewCell {
+    @objc
+    private func wishButtonCliekd() {
+        User.updateWishList(productId)
+        delegate?.reloadData(tag)
+    }
 }
