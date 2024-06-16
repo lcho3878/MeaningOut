@@ -23,7 +23,7 @@ enum NaverAPI {
         case secretKey = "X-Naver-Client-Secret"
     }
     
-    static func callRequest(query: String, sort: String, display: Int, start: Int, completion: @escaping (ShoppingResult) -> Void) {
+    static func callRequest(query: String, sort: String, display: Int, start: Int, completion: @escaping (ShoppingResult?, AFError?) -> Void) {
         guard let url = URL(string: NaverAPI.ParamInfoItem.shoppingURL) else { return }
         let param: Parameters = [
             NaverAPI.ParamInfoItem.query.rawValue: query,
@@ -37,26 +37,12 @@ enum NaverAPI {
         ]
         AF.request(url, parameters: param,headers: headers).responseDecodable(of: ShoppingResult.self) { response in
             switch response.result {
-
             case .success(let value):
-                completion(value)
+                completion(value, nil)
+                
             case .failure(let error):
-                print(error)
+                completion(nil, error)
             }
-            
-            //            case .success(let value):
-            //                if self.start == 1 {
-            //                    self.totalLabel.text = value.totlaResult
-            //                    self.list = value.items
-            //                    guard !self.list.isEmpty else { return }
-            //                    self.resultCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top , animated: true)
-            //                }
-            //                else {
-            //                    self.list.append(contentsOf: value.items)
-            //                }
-            //
-            //            case .failure(let error):
-            //                print(error)
         }
     }
 }

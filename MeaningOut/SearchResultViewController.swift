@@ -8,6 +8,7 @@
 import UIKit
 
 import SnapKit
+import Toast
 
 class SearchResultViewController: BaseViewController {
     
@@ -68,7 +69,6 @@ class SearchResultViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        callRequest()
         configureCollectionView()
         configureButton()
         configureSelectedButton()
@@ -124,7 +124,12 @@ class SearchResultViewController: BaseViewController {
     }
     
     private func callRequest() {
-        NaverAPI.callRequest(query: query, sort: sort, display: display, start: start) { value in
+        NaverAPI.callRequest(query: query, sort: sort, display: display, start: start) { value, error in
+            guard error == nil else {
+                self.view.makeToast(error?.localizedDescription)
+                return
+            }
+            guard let value else { return }
             if self.start == 1 {
                 self.totalLabel.text = value.totlaResult
                 self.list = value.items
