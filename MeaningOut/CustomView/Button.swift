@@ -27,16 +27,8 @@ class FilterButton: UIButton {
     
     override var isSelected: Bool{
         didSet {
-            if isSelected {
-                backgroundColor = Constant.AppColor.heavyGray
-                layer.borderColor = Constant.AppColor.white.cgColor
-                layer.borderWidth = 1
-            }
-            else {
-                backgroundColor = Constant.AppColor.white
-                layer.borderColor = Constant.AppColor.black.cgColor
-                layer.borderWidth = 1
-            }
+            backgroundColor = isSelected ? Constant.AppColor.heavyGray : Constant.AppColor.white
+            layer.borderColor = isSelected ? Constant.AppColor.white.cgColor : Constant.AppColor.black.cgColor
         }
     }
     
