@@ -140,6 +140,7 @@ class MainViewController: BaseViewController {
     
     private func pushViewController(_ query: String) {
         let searchResultVC = SearchResultViewController()
+        list[query] = Date()
         searchResultVC.query = query
         navigationController?.pushViewController(searchResultVC, animated: true)
     }
@@ -161,7 +162,6 @@ extension MainViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let query = searchBar.searchTextField.text else { return }
-        list.append(query)
         searchBar.resignFirstResponder()
         pushViewController(query)
     }
@@ -175,6 +175,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         searchTableView.register(SearchCell.self, forCellReuseIdentifier: SearchCell.id)
     }
     
+ 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return list.count
@@ -182,23 +183,24 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchCell.id, for: indexPath) as? SearchCell else { return UITableViewCell() }
-        let data = list[indexPath.row]
+        let data = list.sorted { $0.value > $1.value }[indexPath.row]
+        cell.key = data.key
         cell.configureData(data)
-        cell.tag = indexPath.row
+
         cell.delegate = self
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let query = list[indexPath.row]
+        let query = list.sorted { $0.value > $1.value }[indexPath.row].key
         pushViewController(query)
     }
     
 }
 
 extension MainViewController: SearchCellDelegate {
-    func removeElement(_ index: Int) {
-        list.remove(at: index)
+    func removeElement(_ key: String) {
+        list.removeValue(forKey: key)
     }
 
 }

@@ -49,9 +49,9 @@ struct User {
         }
     }
     
-    static var searchList: [String] {
+    static var searchList: [String: Date] {
         get {
-            guard let searchList = UserDefaults.standard.array(forKey: "searchList") as? [String] else { return [] }
+            guard let searchList = UserDefaults.standard.value(forKey: "searchList") as? [String: Date] else { return [:] }
             return searchList
         }
         set {

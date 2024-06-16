@@ -9,10 +9,12 @@ import UIKit
 import SnapKit
 
 protocol SearchCellDelegate: AnyObject {
-    func removeElement(_ index: Int)
+    func removeElement(_ key: String)
 }
 
 class SearchCell: UITableViewCell {
+    
+    var key: String!
     
     weak var delegate: SearchCellDelegate?
     
@@ -34,6 +36,13 @@ class SearchCell: UITableViewCell {
         deleteButton.addTarget(self, action: #selector(deleteButtonClicked), for: .touchUpInside)
         return deleteButton
     }()
+    
+    private let dateLabel = {
+        let lb = UILabel()
+        lb.font = Constant.FontSize.subtTitle
+        lb.textColor = Constant.AppColor.middleGray
+        return lb
+    }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -49,6 +58,7 @@ class SearchCell: UITableViewCell {
         contentView.addSubview(clockImageView)
         contentView.addSubview(titleLabel)
         contentView.addSubview(deleteButton)
+        contentView.addSubview(dateLabel)
     }
     
     private func configureLayout() {
@@ -70,10 +80,16 @@ class SearchCell: UITableViewCell {
             $0.centerY.equalTo(contentView.safeAreaLayoutGuide)
             $0.size.equalTo(clockImageView)
         }
+        
+        dateLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalTo(deleteButton.snp.leading).offset(-8)
+        }
     }
     
-    func configureData(_ data: String) {
-        titleLabel.text = data
+    func configureData(_ data: Dictionary<String, Date>.Element) {
+        titleLabel.text = data.key
+        dateLabel.text = data.value.formatted()
     }
     
 }
@@ -82,7 +98,6 @@ class SearchCell: UITableViewCell {
 extension SearchCell {
     @objc
     private func deleteButtonClicked() {
-        let index = tag
-        delegate?.removeElement(index)
+        delegate?.removeElement(key)
     }
 }
