@@ -43,6 +43,7 @@
 		542A027C2C1D724500F8BE47 /* SearchResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A027B2C1D724500F8BE47 /* SearchResultCollectionViewCell.swift */; };
 		542A02802C1DB19D00F8BE47 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A027F2C1DB19D00F8BE47 /* DetailViewController.swift */; };
 		542A02822C1EFF2B00F8BE47 /* NaverAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A02812C1EFF2B00F8BE47 /* NaverAPI.swift */; };
+		542A02852C1F0C7700F8BE47 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 542A02842C1F0C7700F8BE47 /* Toast */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				542A02852C1F0C7700F8BE47 /* Toast in Frameworks */,
 				542A024A2C1B590D00F8BE47 /* SnapKit in Frameworks */,
 				542A02442C1B58FE00F8BE47 /* Kingfisher in Frameworks */,
 				542A02472C1B590500F8BE47 /* Alamofire in Frameworks */,
@@ -238,6 +240,7 @@
 				542A02432C1B58FE00F8BE47 /* Kingfisher */,
 				542A02462C1B590500F8BE47 /* Alamofire */,
 				542A02492C1B590D00F8BE47 /* SnapKit */,
+				542A02842C1F0C7700F8BE47 /* Toast */,
 			);
 			productName = MeaningOut;
 			productReference = 542A02212C1B534B00F8BE47 /* MeaningOut.app */;
@@ -271,6 +274,7 @@
 				542A02422C1B58FE00F8BE47 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				542A02452C1B590500F8BE47 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				542A02482C1B590D00F8BE47 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				542A02832C1F0C7700F8BE47 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = 542A02222C1B534B00F8BE47 /* Products */;
 			projectDirPath = "";
@@ -577,6 +581,14 @@
 				minimumVersion = 5.7.1;
 			};
 		};
+		542A02832C1F0C7700F8BE47 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -594,6 +606,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 542A02482C1B590D00F8BE47 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		542A02842C1F0C7700F8BE47 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 542A02832C1F0C7700F8BE47 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
