@@ -10,6 +10,7 @@ import SnapKit
 
 class OnboardingViewController: BaseViewController  {
 
+    //MARK: View Properties
     private let titleLabel = {
         let titleLabel = UILabel()
         titleLabel.text = "MeaningOut"
@@ -32,11 +33,12 @@ class OnboardingViewController: BaseViewController  {
         return startButton
     }()
 
+    //MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
+    //MARK: View Functions
     override func configureHierarchy() {
         view.addSubview(mainImageView)
         view.addSubview(titleLabel)
@@ -66,7 +68,7 @@ class OnboardingViewController: BaseViewController  {
 
 }
 
-// 버튼관련 로직
+//MARK: startButton Functions
 extension OnboardingViewController {
     private func startButtonClicked() {
         let profileSettingVC = ProfileViewController()

@@ -12,6 +12,7 @@ import Toast
 
 class SearchResultViewController: BaseViewController {
     
+    //MARK: Properties
     var query: String!
     
     private var start = 1
@@ -32,11 +33,12 @@ class SearchResultViewController: BaseViewController {
     
     private let viewType = Constant.ViewType.result
     
+    //MARK: View Properties
     private let totalLabel = {
-        let lb = UILabel()
-        lb.textColor = Constant.AppColor.orange
-        lb.font = Constant.FontSize.contentBold
-        return lb
+        let totalLabel = UILabel()
+        totalLabel.textColor = Constant.AppColor.orange
+        totalLabel.font = Constant.FontSize.contentBold
+        return totalLabel
     }()
     
     private let simButton = FilterButton(buttonType: .sim)
@@ -49,8 +51,6 @@ class SearchResultViewController: BaseViewController {
     
     private lazy var buttonList = [simButton, dateButton, dscButton, ascButton]
 
-
-    
     private let resultCollectionViewLayout = {
         let layout = UICollectionViewFlowLayout()
         let verticalSpacing: CGFloat = 8
@@ -67,6 +67,7 @@ class SearchResultViewController: BaseViewController {
     
     private lazy var resultCollectionView = UICollectionView(frame: .zero, collectionViewLayout: resultCollectionViewLayout)
 
+    //MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
@@ -87,6 +88,7 @@ class SearchResultViewController: BaseViewController {
         view.addSubview(resultCollectionView)
     }
     
+    //MARK: View Functions
     override func configureLayout() {
         
         totalLabel.snp.makeConstraints {
@@ -123,6 +125,11 @@ class SearchResultViewController: BaseViewController {
         }
     }
     
+}
+
+//MARK: API Request Function
+extension SearchResultViewController {
+    
     private func callRequest() {
         NaverAPI.callRequest(query: query, sort: sort, display: display, start: start) { value, error in
             guard error == nil else {
@@ -141,8 +148,10 @@ class SearchResultViewController: BaseViewController {
             }
         }
     }
+    
 }
 
+//MARK: CollectionView Functions
 extension SearchResultViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     private func configureCollectionView() {
@@ -177,9 +186,9 @@ extension SearchResultViewController: UICollectionViewDelegate, UICollectionView
         navigationController?.pushViewController(detailVC, animated: true)
     }
     
-    
 }
 
+//MARK: Pagination Functions
 extension SearchResultViewController: UICollectionViewDataSourcePrefetching {
     
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
@@ -193,7 +202,7 @@ extension SearchResultViewController: UICollectionViewDataSourcePrefetching {
     
 }
 
-//버튼관련 로직
+//MARK: Button Functions
 extension SearchResultViewController {
     
     private func configureButton() {
@@ -218,6 +227,7 @@ extension SearchResultViewController {
     
 }
 
+//MARK: DetailViewControllerDelegate
 extension SearchResultViewController: DetailViewControllerDelegate {
     
     func updateUI(_ row: Int) {
@@ -226,6 +236,7 @@ extension SearchResultViewController: DetailViewControllerDelegate {
     
 }
 
+//MARK: SearchResultCollectionViewCellDelegate
 extension SearchResultViewController: SearchResultCollectionViewCellDelegate {
     
     func reloadData(_ row: Int) {

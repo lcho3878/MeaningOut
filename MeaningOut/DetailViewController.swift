@@ -7,6 +7,7 @@
 
 import UIKit
 import WebKit
+import SnapKit
 
 protocol DetailViewControllerDelegate: AnyObject {
     func updateUI(_ row: Int)
@@ -14,6 +15,7 @@ protocol DetailViewControllerDelegate: AnyObject {
 
 class DetailViewController: BaseViewController {
 
+    //MARK: Properties
     private let viewType = Constant.ViewType.result
     
     var data: Shopping!
@@ -22,6 +24,7 @@ class DetailViewController: BaseViewController {
     
     weak var delegate: DetailViewControllerDelegate?
     
+    //MARK: View Properties
     private let webView = WKWebView()
     
     private let activityIndicator = {
@@ -37,13 +40,15 @@ class DetailViewController: BaseViewController {
         return rightBarButton
     }()
     
+    //MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureBarButtonImage()
+        configureWebView()
         webViewLoad()
-        webView.navigationDelegate = self
     }
     
+    //MARK: View Functions
     override func configureNavigationItem() {
         navigationItem.title = data.cleanTitle
         navigationItem.rightBarButtonItem = rightBarButton
@@ -55,6 +60,7 @@ class DetailViewController: BaseViewController {
     }
     
     override func configureLayout() {
+        
         webView.snp.makeConstraints {
             $0.edges.equalTo(view.safeAreaLayoutGuide)
         }
@@ -64,16 +70,10 @@ class DetailViewController: BaseViewController {
         }
         
     }
-    
-    private func webViewLoad() {
-        let url = URL(string: data.link)!
-        let request = URLRequest(url: url, timeoutInterval: 5)
-        webView.load(request)
-    }
 
 }
 
-//바버튼 관련 로직
+//MARK: BarButton Functions
 extension DetailViewController {
     
     private func configureBarButtonImage() {
@@ -90,7 +90,19 @@ extension DetailViewController {
     
 }
 
+//MARK: WebView Functions
 extension DetailViewController: WKNavigationDelegate {
+    
+    private func configureWebView() {
+        webView.navigationDelegate = self
+    }
+    
+    private func webViewLoad() {
+        let url = URL(string: data.link)!
+        let request = URLRequest(url: url, timeoutInterval: 5)
+        webView.load(request)
+    }
+    
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         activityIndicator.startAnimating()
     }

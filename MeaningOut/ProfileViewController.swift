@@ -14,10 +14,12 @@ protocol ProfileViewControllerDelegate: AnyObject {
 
 class ProfileViewController: BaseViewController {
     
+    //MARK: Properties
     var viewType: Constant.ViewType!
     
     weak var delegate: ProfileViewControllerDelegate?
     
+    //MARK: View Properties
     private lazy var profileImageView = {
         let profileImageView = UIImageView()
         if viewType == .profileEdit {
@@ -36,7 +38,6 @@ class ProfileViewController: BaseViewController {
         return profileImageView
     }()
     
-    //카메라 이미지 크기 조정 좀 더 고려해볼 것
     private let cameraImageView = {
         let cameraImageView = UIImageView()
         cameraImageView.image = Constant.IconImage.cameraFill?.withTintColor(Constant.AppColor.white, renderingMode: .alwaysOriginal)
@@ -81,9 +82,9 @@ class ProfileViewController: BaseViewController {
         return saveButton
     }()
     
+    //MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     override func viewDidLayoutSubviews() {
@@ -93,6 +94,7 @@ class ProfileViewController: BaseViewController {
         nicknameTextField.makeUnderLine(width: 0.5, color: .black)
     }
     
+    //MARK: View Functions
     override func configureNavigationItem() {
         navigationItem.title = viewType.navigationTitle
         if viewType == .profileEdit {
@@ -146,7 +148,7 @@ class ProfileViewController: BaseViewController {
 
 }
 
-// @objc func, nickname 안되는데 누르면 토스트 메시지 띄워보기, profilesetting관련
+//MARK: ImageTapGesture, Button Functions
 extension ProfileViewController {
     @objc
     private func profileImageViewTapped() {
@@ -158,48 +160,45 @@ extension ProfileViewController {
     }
     
     private func completeButtonClicked() {
-        guard let nickname = nicknameTextField.text,
-              checkValid(nickname) == .correct else {
-            showToast("사용할 수 있는 닉네임이 아닙니다.\n다시 한번 확인해주세요.")
-            return
-        }
+        guard let nickname = nicknameTextField.text else { return }
+        guard isValidNickname(nickname) else { return }
         User.nickanme = nickname
         User.profileImage = profileImageView.image
         User.signupDate = Date().dateString("yyyy.MM.dd")
         let tabbarVC = TabBarController()
         changeRootViewController(tabbarVC)
     }
-}
-
-//profileEdit 관련 로직
-extension ProfileViewController {
+    
     @objc
     private func saveButtonClikced() {
-        guard let nickname = nicknameTextField.text,
-              checkValid(nickname) == .correct else { 
-            showToast("사용할 수 있는 닉네임이 아닙니다.\n다시 한번 확인해주세요.")
-            return
-        }
+        guard let nickname = nicknameTextField.text else { return }
+        guard isValidNickname(nickname) else { return }
         User.nickanme = nickname
         User.profileImage = profileImageView.image
         delegate?.updateUI()
         navigationController?.popViewController(animated: true)
     }
+    
+    private func isValidNickname(_ nickname: String) -> Bool {
+        guard checkValid(nickname) == .correct else {
+            showToast("사용할 수 있는 닉네임이 아닙니다.\n다시 한번 확인해주세요.")
+            return false
+        }
+        return true
+    }
 }
 
-// nicknameTextField 관련 로직
+//MARK: TextField Functions
 extension ProfileViewController {
+
     @objc
     private func nicknameTextFieldChanged(_ sender: UITextField) {
         guard let nickname = nicknameTextField.text else { return }
         configureValidCheckLabel(checkValid(nickname))
-
     }
 
-    // 유효성 검사 부분 좀더 다듬을 수 있으면 다듬을 것
     private func checkValid(_ text: String?) -> Constant.NicknameValid {
         guard let text = text, text.count >= 2, text.count < 10 else { return .nicknameLength}
-        
         let special: [Character] = ["@", "#", "$", "%"]
         let number: [Character] = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
         for char in text {
@@ -210,11 +209,12 @@ extension ProfileViewController {
                 return .containNumber
             }
         }
-
         return .correct
     }
+    
 }
 
+//MARK: ProfileImageViewControllerDelegate
 extension ProfileViewController: ProfileImageViewControllerDelegate {
     
     func updateProfileImage(_ image: UIImage) {

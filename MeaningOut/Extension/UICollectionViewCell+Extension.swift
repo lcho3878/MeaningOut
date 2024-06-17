@@ -8,7 +8,9 @@
 import UIKit
 
 extension UICollectionViewCell: Reusable {
+    
     static var id: String {
         return String(describing: self)
     }
+    
 }

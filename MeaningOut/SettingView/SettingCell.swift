@@ -10,6 +10,7 @@ import SnapKit
 
 class SettingCell: UITableViewCell {
     
+    //MARK: View Properties
     private let titleLabel = {
         let titleLabel = UILabel()
         titleLabel.textColor = Constant.AppColor.black
@@ -30,6 +31,7 @@ class SettingCell: UITableViewCell {
         return wishListLabel
     }()
 
+    //MARK: View Life Cycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configureHierachy()
@@ -40,6 +42,7 @@ class SettingCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: View Functions
     private func configureHierachy() {
         contentView.addSubview(titleLabel)
         contentView.addSubview(wishListLabel)
@@ -72,5 +75,5 @@ class SettingCell: UITableViewCell {
         wishListLabel.isHidden = false
         cartImageView.isHidden = false
     }
-
+    
 }

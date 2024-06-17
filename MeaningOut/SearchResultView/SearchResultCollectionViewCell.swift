@@ -15,10 +15,12 @@ protocol SearchResultCollectionViewCellDelegate: AnyObject {
 
 class SearchResultCollectionViewCell: UICollectionViewCell {
     
+    //MARK: Properties
     weak var delegate: SearchResultCollectionViewCellDelegate?
     
     var productId: String?
     
+    //MARK: View Properties
     private let itemImageView = {
         let itemImageView = UIImageView()
         itemImageView.contentMode = .scaleAspectFill
@@ -55,6 +57,7 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
         return priceLabel
     }()
     
+    //MARK: View Life Cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureHierarchy()
@@ -70,6 +73,7 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
         itemImageView.layer.cornerRadius = 16
     }
     
+    //MARK: View Functions
     private func configureHierarchy() {
         contentView.addSubview(itemImageView)
         contentView.addSubview(wishButton)
@@ -111,7 +115,6 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
         let url = URL(string: data.image)
         itemImageView.kf.setImage(with: url)
         mallLabel.text = data.mallName
-//        titleLabel.text = data.cleanTitle
         titleLabel.attributedText = String.getHilightedText(data.cleanTitle, keyword)
         priceLabel.text = data.price
         wishButton.setImage(data.isLike ? UIImage.likeSelected : UIImage.likeUnselected, for: .normal)
@@ -120,6 +123,7 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
     
 }
 
+//MARK: Button Functions
 extension SearchResultCollectionViewCell {
     @objc
     private func wishButtonCliekd() {

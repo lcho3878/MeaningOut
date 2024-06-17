@@ -9,16 +9,10 @@ import UIKit
 import Toast
 
 class BaseViewController: UIViewController, CodeBasable {
-    /*
-     configure함수들을 viewDidLoad에서 실행하므로 상속받은 클래스에서는
-     configure함수를 구현하여 사용하면 자동으로 실행함
-     */
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-        navigationItem.backButtonDisplayMode = .minimal
-        navigationController?.navigationBar.tintColor = .black
-        
+        configureView()
         configureHierarchy()
         configureLayout()
         configureNavigationItem()
@@ -26,6 +20,12 @@ class BaseViewController: UIViewController, CodeBasable {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
+    }
+    
+    private func configureView() {
+        view.backgroundColor = .systemBackground
+        navigationItem.backButtonDisplayMode = .minimal
+        navigationController?.navigationBar.tintColor = .black
     }
     
     func configureNavigationItem() {}

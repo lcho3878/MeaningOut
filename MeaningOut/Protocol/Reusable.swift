@@ -8,5 +8,7 @@
 import Foundation
 
 protocol Reusable {
+    
     static var id: String { get }
+    
 }

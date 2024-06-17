@@ -22,11 +22,12 @@ struct Shopping: Decodable {
     let category2: String
     let category3: String
     let category4: String
+    
     var isLike: Bool {
         guard let isLike = User.wishList[productId] else { return false }
         return isLike
     }
-    
+
     var cleanTitle: String {
         var cleanTitle = title
         cleanTitle = cleanTitle.replacingOccurrences(of: "<b>", with: "")

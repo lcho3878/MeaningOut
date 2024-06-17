@@ -9,13 +9,13 @@ import Foundation
 import Alamofire
 
 enum NaverAPI {
+    
     enum ParamInfoItem: String {
         static let shoppingURL = "https://openapi.naver.com/v1/search/shop.json"
         case query
         case sort
         case display
         case start
-        
     }
     
     enum HeaderInfoItem: String {
@@ -26,6 +26,7 @@ enum NaverAPI {
     struct APIError: Decodable {
         let errorMessage: String
         let errorCode: String
+        
         var errorType: ErrorType? {
             switch errorCode {
             case "SE01": return .incorectQuery
@@ -51,7 +52,6 @@ enum NaverAPI {
         case systemError = "서버 내부에 오류가 발생했습니다. 개발자에게 오류를 신고해 주십시오."
     }
 
-    
     static func callRequest(query: String, sort: String, display: Int, start: Int, completion: @escaping (ShoppingResult?, ErrorType?) -> Void) {
         guard let url = URL(string: NaverAPI.ParamInfoItem.shoppingURL) else { return }
         let param: Parameters = [
@@ -82,4 +82,5 @@ enum NaverAPI {
         }
 
     }
+    
 }

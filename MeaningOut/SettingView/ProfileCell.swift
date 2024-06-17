@@ -10,6 +10,7 @@ import SnapKit
 
 class ProfileCell: UITableViewCell {
 
+    //MARK: View Properties
     private let profileImageView = {
         let profileImageView = UIImageView()
         profileImageView.layer.borderColor = Constant.ProfileImageUI.main.borderColor
@@ -38,6 +39,7 @@ class ProfileCell: UITableViewCell {
         return disclosureImageView
     }()
 
+    //MARK: View Life Cycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configureHierachy()
@@ -59,6 +61,7 @@ class ProfileCell: UITableViewCell {
         profileImageView.makeCircle()
     }
     
+    //MARK: View Functions
     private func configureHierachy() {
         contentView.addSubview(profileImageView)
         contentView.addSubview(nicknameLabel)
@@ -95,6 +98,5 @@ class ProfileCell: UITableViewCell {
         nicknameLabel.text = User.nickanme
         dateLabel.text = User.signupDate
     }
-
 
 }

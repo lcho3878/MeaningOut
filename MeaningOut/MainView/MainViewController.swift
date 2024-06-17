@@ -10,6 +10,7 @@ import SnapKit
 
 class MainViewController: BaseViewController {
     
+    //MARK: Properties
     var list = User.searchList{
         didSet{
             User.searchList = list
@@ -20,6 +21,7 @@ class MainViewController: BaseViewController {
     
     private let viewType = Constant.ViewType.main
     
+    //MARK: View Properties
     private let searchBar = {
         let searchBar = UISearchBar()
         searchBar.searchTextField.placeholder = "브랜드, 상품등을 입력하세요"
@@ -64,6 +66,7 @@ class MainViewController: BaseViewController {
     
     private let searchTableView = UITableView()
 
+    //MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSearchBar()
@@ -71,6 +74,12 @@ class MainViewController: BaseViewController {
         configureIsHidden()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureNavigationItem()
+    }
+    
+    //MARK: View Functions
     override func configureNavigationItem() {
         navigationItem.title = viewType.navigationTitle
     }
@@ -127,12 +136,6 @@ class MainViewController: BaseViewController {
             $0.horizontalEdges.bottom.equalToSuperview()
         }
     }
-    
-    // notification center? 사용 방식도 고려해볼것
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        configureNavigationItem()
-    }
 
     private func configureIsHidden() {
         mainView.isHidden = list.isEmpty
@@ -146,14 +149,17 @@ class MainViewController: BaseViewController {
     }
 }
 
-// 버튼 관련 로직
+//MARK: Button Functions
 extension MainViewController {
+    
     @objc
     private func deleteButtonClicked() {
         list.removeAll()
     }
+    
 }
 
+//MARK: SearchBar Functions
 extension MainViewController: UISearchBarDelegate {
     
     private func configureSearchBar() {
@@ -167,6 +173,7 @@ extension MainViewController: UISearchBarDelegate {
     }
 }
 
+//MARK: TableView Functions
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     private func configureTableView() {
@@ -174,9 +181,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         searchTableView.dataSource = self
         searchTableView.register(SearchCell.self, forCellReuseIdentifier: SearchCell.id)
     }
-    
- 
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return list.count
     }
@@ -198,7 +203,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
+//MARK: SearchCellDelegate
 extension MainViewController: SearchCellDelegate {
+    
     func removeElement(_ key: String) {
         list.removeValue(forKey: key)
     }

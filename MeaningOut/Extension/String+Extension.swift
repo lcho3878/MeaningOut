@@ -8,6 +8,7 @@
 import UIKit
 
 extension String {
+    
     static func getHilightedText(_ text: String, _ searchText: String) -> NSAttributedString {
         let attributedString = NSMutableAttributedString(string: text)
         let range = (text.lowercased() as NSString).range(of: searchText.lowercased())
@@ -18,4 +19,5 @@ extension String {
         }
         return attributedString
     }
+    
 }

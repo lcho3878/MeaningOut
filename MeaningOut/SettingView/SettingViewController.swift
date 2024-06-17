@@ -10,12 +10,15 @@ import SnapKit
 
 class SettingViewController: BaseViewController {
 
+    //MARK: Properties
     private let viewTyle = Constant.ViewType.setting
     
     private let settingMenus = Constant.SettingMenu.allCases
 
+    //MARK: View Properties
     private let settingTableView = UITableView()
     
+    //MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
@@ -26,6 +29,7 @@ class SettingViewController: BaseViewController {
         settingTableView.reloadRows(at: [IndexPath(row: 0, section: 1)], with: .automatic)
     }
     
+    //MARK: View Functions
     override func configureNavigationItem() {
         navigationItem.title = viewTyle.navigationTitle
     }
@@ -41,16 +45,15 @@ class SettingViewController: BaseViewController {
         }
     }
 
-
 }
 
+//MARK: TableView Functions
 extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     
     private func configureTableView() {
         settingTableView.delegate = self
         settingTableView.dataSource = self
         settingTableView.isScrollEnabled = false
-        
         settingTableView.register(ProfileCell.self, forCellReuseIdentifier: ProfileCell.id)
         settingTableView.register(SettingCell.self, forCellReuseIdentifier: SettingCell.id)
     }
@@ -86,7 +89,6 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
             profileEditVC.viewType = .profileEdit
             profileEditVC.delegate = self
             navigationController?.pushViewController(profileEditVC, animated: true)
-
         }
         else {
             guard indexPath.row == 4 else { return }
@@ -106,6 +108,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
+//MARK: ProfileViewControllerDelegate
 extension SettingViewController: ProfileViewControllerDelegate {
     
     func updateUI() {

@@ -14,6 +14,7 @@ protocol ProfileImageViewControllerDelegate: AnyObject {
 
 class ProfileImageViewController: BaseViewController {
     
+    //MARK: Properties
     var viewType: Constant.ViewType!
     
     var profileImage: UIImage!
@@ -22,6 +23,7 @@ class ProfileImageViewController: BaseViewController {
     
     weak var delegate: ProfileImageViewControllerDelegate?
     
+    //MARK: View Properties
     private lazy var profileImageView = {
         let profileImageView = UIImageView()
         profileImageView.image = profileImage
@@ -45,17 +47,15 @@ class ProfileImageViewController: BaseViewController {
         layout.scrollDirection = .vertical
         let spacing: CGFloat = 12
         let width = (UIScreen.main.bounds.width - 5 * spacing)
- 
         layout.itemSize = CGSize(width: width / 4, height: width / 4)
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
         layout.sectionInset = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: spacing)
-        
         let imageCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-
         return imageCollectionView
     }()
     
+    //MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
@@ -67,6 +67,7 @@ class ProfileImageViewController: BaseViewController {
         cameraImageView.makeCircle()
     }
     
+    //MARK: View Functions
     override func configureNavigationItem() {
         navigationItem.title = viewType.navigationTitle
     }
@@ -97,6 +98,7 @@ class ProfileImageViewController: BaseViewController {
     
 }
 
+//MARK: CollectionView Functions
 extension ProfileImageViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     private func configureCollectionView() {
@@ -105,7 +107,6 @@ extension ProfileImageViewController: UICollectionViewDelegate, UICollectionView
         imageCollectionView.register(ProfileImageCollectionViewCell.self, forCellWithReuseIdentifier: ProfileImageCollectionViewCell.id)
         guard let selectedIndex = profileImages.firstIndex(of: profileImage) else { return }
         imageCollectionView.selectItem(at: IndexPath(row: selectedIndex, section: 0), animated: false, scrollPosition: .centeredHorizontally)
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -124,6 +125,5 @@ extension ProfileImageViewController: UICollectionViewDelegate, UICollectionView
         profileImageView.image = image
         delegate?.updateProfileImage(image)
     }
-    
-    
+
 }

@@ -10,27 +10,22 @@ import UIKit
 struct User {
     
     static var nickanme: String? {
-        
-        get{
+        get {
             guard let nickname = UserDefaults.standard.string(forKey: "nickname") else {
                 return nil
             }
             return nickname
         }
-        
-        set{
+        set {
             UserDefaults.standard.set(newValue, forKey: "nickname")
         }
-        
     }
     
     static var profileImage: UIImage? {
-        
         get {
             guard let imageAssetName = UserDefaults.standard.string(forKey: "profileImageAssetName") else { return nil }
             return UIImage(named: imageAssetName)
         }
-        
         set {
             guard let imageAssetName = newValue?.imageAsset?.value(forKey: "assetName") else { return }
             UserDefaults.standard.set(imageAssetName, forKey: "profileImageAssetName")

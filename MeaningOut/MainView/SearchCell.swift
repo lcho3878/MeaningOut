@@ -14,10 +14,12 @@ protocol SearchCellDelegate: AnyObject {
 
 class SearchCell: UITableViewCell {
     
+    //MARK: Properties
     var key: String!
     
     weak var delegate: SearchCellDelegate?
     
+    //MARK: View Properties
     private let clockImageView = {
         let clockImageView = UIImageView()
         clockImageView.image = Constant.IconImage.clock?.withTintColor(Constant.AppColor.black, renderingMode: .alwaysOriginal)
@@ -38,12 +40,13 @@ class SearchCell: UITableViewCell {
     }()
     
     private let dateLabel = {
-        let lb = UILabel()
-        lb.font = Constant.FontSize.subtTitle
-        lb.textColor = Constant.AppColor.middleGray
-        return lb
+        let dateLabel = UILabel()
+        dateLabel.font = Constant.FontSize.subtTitle
+        dateLabel.textColor = Constant.AppColor.middleGray
+        return dateLabel
     }()
 
+    //MARK: View Life Cycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configureHierarchy()
@@ -54,6 +57,7 @@ class SearchCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: View Functions
     private func configureHierarchy() {
         contentView.addSubview(clockImageView)
         contentView.addSubview(titleLabel)
@@ -95,7 +99,7 @@ class SearchCell: UITableViewCell {
     
 }
 
-//버튼 관련 로직
+//MARK: Button Functions
 extension SearchCell {
     @objc
     private func deleteButtonClicked() {

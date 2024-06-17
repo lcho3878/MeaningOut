@@ -8,6 +8,7 @@
 import UIKit
 
 extension UIButton.Configuration {
+    
     static func orangeButton(buttonType: Constant.ButtonType) -> UIButton.Configuration {
         var configuration = UIButton.Configuration.filled()
         let container = AttributeContainer([.font: Constant.FontSize.titleBold])
@@ -30,4 +31,5 @@ extension UIButton.Configuration {
         configuration.background.cornerRadius = 15
         return configuration
     }
+    
 }
