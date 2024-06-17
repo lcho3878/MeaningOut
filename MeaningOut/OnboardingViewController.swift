@@ -26,8 +26,9 @@ class OnboardingViewController: BaseViewController  {
     }()
     
     private lazy var startButton = {
-        let startButton = OrangeButton(buttonType: .start)
-        startButton.addTarget(self, action: #selector(startButtonClicked), for: .touchUpInside)
+        let startButton = UIButton(configuration: .orangeButton(buttonType: .start), primaryAction: UIAction(handler: { _ in
+            self.startButtonClicked()
+        }))
         return startButton
     }()
 
@@ -67,7 +68,6 @@ class OnboardingViewController: BaseViewController  {
 
 // 버튼관련 로직
 extension OnboardingViewController {
-    @objc
     private func startButtonClicked() {
         let profileSettingVC = ProfileViewController()
         profileSettingVC.viewType = Constant.ViewType.profileSetting

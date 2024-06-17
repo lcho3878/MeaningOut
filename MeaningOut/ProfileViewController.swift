@@ -65,8 +65,9 @@ class ProfileViewController: BaseViewController {
     }()
     
     private lazy var completeButton = {
-        let completeButton = OrangeButton(buttonType: .complete)
-        completeButton.addTarget(self, action: #selector(completeButtonClicked), for: .touchUpInside)
+        let completeButton = UIButton(configuration: .orangeButton(buttonType: .complete), primaryAction: UIAction(handler: { _ in
+            self.completeButtonClicked()
+        }))
         completeButton.isHidden = viewType == .profileEdit
         return completeButton
     }()
@@ -156,7 +157,6 @@ extension ProfileViewController {
         navigationController?.pushViewController(profileImageVC, animated: true)
     }
     
-    @objc
     private func completeButtonClicked() {
         guard let nickname = nicknameTextField.text,
               checkValid(nickname) == .correct else {

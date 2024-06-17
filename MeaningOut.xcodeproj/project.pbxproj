@@ -44,6 +44,7 @@
 		542A02802C1DB19D00F8BE47 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A027F2C1DB19D00F8BE47 /* DetailViewController.swift */; };
 		542A02822C1EFF2B00F8BE47 /* NaverAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A02812C1EFF2B00F8BE47 /* NaverAPI.swift */; };
 		542A02852C1F0C7700F8BE47 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 542A02842C1F0C7700F8BE47 /* Toast */; };
+		54E18D0B2C20047B00C1BFEC /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E18D0A2C20047B00C1BFEC /* UIButton+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +83,7 @@
 		542A027B2C1D724500F8BE47 /* SearchResultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCollectionViewCell.swift; sourceTree = "<group>"; };
 		542A027F2C1DB19D00F8BE47 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		542A02812C1EFF2B00F8BE47 /* NaverAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverAPI.swift; sourceTree = "<group>"; };
+		54E18D0A2C20047B00C1BFEC /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +179,7 @@
 				542A02642C1C4C1E00F8BE47 /* UICollectionViewCell+Extension.swift */,
 				542A02692C1C581500F8BE47 /* UITableViewCell+Extension.swift */,
 				542A026D2C1C60D600F8BE47 /* Date+Extension.swift */,
+				54E18D0A2C20047B00C1BFEC /* UIButton+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54E18D0B2C20047B00C1BFEC /* UIButton+Extension.swift in Sources */,
 				542A02782C1D641A00F8BE47 /* User.swift in Sources */,
 				542A027A2C1D680100F8BE47 /* Shopping.swift in Sources */,
 				542A02632C1C4BF100F8BE47 /* Reusable.swift in Sources */,
