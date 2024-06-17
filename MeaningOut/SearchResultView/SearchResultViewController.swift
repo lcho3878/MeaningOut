@@ -161,7 +161,7 @@ extension SearchResultViewController: UICollectionViewDelegate, UICollectionView
         
         guard let  cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchResultCollectionViewCell.id, for: indexPath) as? SearchResultCollectionViewCell else { return UICollectionViewCell() }
         let data = list[indexPath.row]
-        cell.configureData(data)
+        cell.configureData(data, query)
         cell.tag = indexPath.row
         cell.delegate = self
         return cell

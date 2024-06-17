@@ -106,12 +106,13 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func configureData(_ data: Shopping) {
+    func configureData(_ data: Shopping, _ keyword: String) {
         productId = data.productId
         let url = URL(string: data.image)
         itemImageView.kf.setImage(with: url)
         mallLabel.text = data.mallName
-        titleLabel.text = data.cleanTitle
+//        titleLabel.text = data.cleanTitle
+        titleLabel.attributedText = String.getHilightedText(data.cleanTitle, keyword)
         priceLabel.text = data.price
         wishButton.setImage(data.isLike ? UIImage.likeSelected : UIImage.likeUnselected, for: .normal)
         wishButton.backgroundColor = data.isLike ? Constant.AppColor.white : Constant.AppColor.lightGrayBorder
