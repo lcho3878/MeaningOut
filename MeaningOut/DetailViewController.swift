@@ -24,6 +24,14 @@ class DetailViewController: BaseViewController {
     
     private let webView = WKWebView()
     
+    private let activityIndicator = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.style = .large
+        activityIndicator.color = Constant.AppColor.orange
+        activityIndicator.hidesWhenStopped = true
+        return activityIndicator
+    }()
+    
     private lazy var rightBarButton = {
         let rightBarButton = UIBarButtonItem(title: nil, style: .plain, target: self, action: #selector(barButtonClick))
         return rightBarButton
@@ -33,6 +41,7 @@ class DetailViewController: BaseViewController {
         super.viewDidLoad()
         configureBarButtonImage()
         webViewLoad()
+        webView.navigationDelegate = self
     }
     
     override func configureNavigationItem() {
@@ -42,17 +51,23 @@ class DetailViewController: BaseViewController {
 
     override func configureHierarchy() {
         view.addSubview(webView)
+        view.addSubview(activityIndicator)
     }
     
     override func configureLayout() {
         webView.snp.makeConstraints {
             $0.edges.equalTo(view.safeAreaLayoutGuide)
         }
+        
+        activityIndicator.snp.makeConstraints {
+            $0.edges.equalTo(view.safeAreaLayoutGuide)
+        }
+        
     }
     
     private func webViewLoad() {
         let url = URL(string: data.link)!
-        let request = URLRequest(url: url)
+        let request = URLRequest(url: url, timeoutInterval: 5)
         webView.load(request)
     }
 
@@ -73,4 +88,19 @@ extension DetailViewController {
         delegate?.updateUI(row)
     }
     
+}
+
+extension DetailViewController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        activityIndicator.startAnimating()
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        activityIndicator.stopAnimating()
+    }
+    
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: any Error) {
+        showToast(error.localizedDescription)
+        activityIndicator.stopAnimating()
+    }
 }
