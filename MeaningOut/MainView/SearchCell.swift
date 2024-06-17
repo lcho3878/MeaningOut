@@ -72,6 +72,7 @@ class SearchCell: UITableViewCell {
         
         titleLabel.snp.makeConstraints {
             $0.leading.equalTo(clockImageView.snp.trailing).offset(8)
+            $0.trailing.equalTo(dateLabel.snp.leading).inset(-8)
             $0.centerY.equalTo(contentView.safeAreaLayoutGuide)
         }
         
@@ -89,7 +90,7 @@ class SearchCell: UITableViewCell {
     
     func configureData(_ data: Dictionary<String, Date>.Element) {
         titleLabel.text = data.key
-        dateLabel.text = data.value.formatted()
+        dateLabel.text = data.value.dateString("MM. dd a hh:mm")
     }
     
 }
