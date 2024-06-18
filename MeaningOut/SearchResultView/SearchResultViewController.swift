@@ -19,6 +19,8 @@ class SearchResultViewController: BaseViewController {
     
     private var display = 30
     
+    private var total = 0
+    
     private var list: [Shopping] = []{
         didSet {
             resultCollectionView.reloadData()
@@ -138,6 +140,7 @@ extension SearchResultViewController {
             }
             guard let value else { return }
             if self.start == 1 {
+                self.total = value.total
                 self.totalLabel.text = value.totlaResult
                 self.list = value.items
                 guard !self.list.isEmpty else { return }
@@ -193,7 +196,7 @@ extension SearchResultViewController: UICollectionViewDataSourcePrefetching {
     
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         for indexPath in indexPaths {
-            if indexPath.row == list.count - 10 , start + display <= 1000 {
+            if indexPath.row == list.count - 10 , start + display <= total {
                 start += display
                 callRequest()
             }
@@ -221,8 +224,9 @@ extension SearchResultViewController {
     private func clickButton(_ sender: FilterButton) {
         buttonList.forEach { $0.isSelected = false }
         sender.isSelected = true
-        sort = Constant.FilterButtonType.allCases[sender.tag].sort
         start = 1
+        sort = Constant.FilterButtonType.allCases[sender.tag].sort
+
     }
     
 }
