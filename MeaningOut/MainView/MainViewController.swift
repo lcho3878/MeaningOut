@@ -180,6 +180,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         searchTableView.delegate = self
         searchTableView.dataSource = self
         searchTableView.register(SearchCell.self, forCellReuseIdentifier: SearchCell.id)
+        searchTableView.separatorStyle = .none
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

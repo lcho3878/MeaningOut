@@ -56,6 +56,8 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         settingTableView.isScrollEnabled = false
         settingTableView.register(ProfileCell.self, forCellReuseIdentifier: ProfileCell.id)
         settingTableView.register(SettingCell.self, forCellReuseIdentifier: SettingCell.id)
+        settingTableView.separatorColor = Constant.AppColor.black
+        settingTableView.separatorInset = .zero
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -64,6 +66,16 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return section == 0 ? 1 : settingMenus.count
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 0.2))
+        footerView.backgroundColor = Constant.AppColor.black
+        return footerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
