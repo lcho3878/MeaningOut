@@ -52,7 +52,7 @@ class ProfileViewController: BaseViewController {
         nicknameTextField.placeholder = Constant.TextFieldType.nickname.rawValue
         if viewType == .profileEdit {
             nicknameTextField.text = User.nickanme
-            configureValidCheckLabel(checkValid(User.nickanme))
+            configureValidCheckLabel(User.nickanme)
         }
         nicknameTextField.addTarget(self, action: #selector(nicknameTextFieldChanged), for: .editingChanged)
         return nicknameTextField
@@ -142,8 +142,16 @@ class ProfileViewController: BaseViewController {
         }
     }
     
-    private func configureValidCheckLabel(_ validResult: Constant.NicknameValid) {
-        validCheckLabel.text = validResult.validResult
+    private func configureValidCheckLabel(_ nickname: String?) {
+        guard (nickname != nil) else { return }
+        do {
+            let result = try checkValid(nickname)
+            validCheckLabel.text = result.validResult
+        }
+        catch {
+            guard let error = error as? Constant.NicknameValid else { return }
+            validCheckLabel.text = error.validResult
+        }
     }
 
 }
@@ -180,11 +188,15 @@ extension ProfileViewController {
     }
     
     private func isValidNickname(_ nickname: String) -> Bool {
-        guard checkValid(nickname) == .correct else {
-            showToast("사용할 수 있는 닉네임이 아닙니다.\n다시 한번 확인해주세요.")
+        do {
+            try checkValid(nickname)
+            return true
+        }
+        catch {
+            guard let error = error as? Constant.NicknameValid else { return false }
+            showToast(error.validResult)
             return false
         }
-        return true
     }
 }
 
@@ -194,19 +206,21 @@ extension ProfileViewController {
     @objc
     private func nicknameTextFieldChanged(_ sender: UITextField) {
         guard let nickname = nicknameTextField.text else { return }
-        configureValidCheckLabel(checkValid(nickname))
+        configureValidCheckLabel(nickname)
     }
-
-    private func checkValid(_ text: String?) -> Constant.NicknameValid {
-        guard let text = text, text.count >= 2, text.count < 10 else { return .nicknameLength}
+    
+    @discardableResult
+    private func checkValid(_ text: String?) throws -> Constant.NicknameValid {
+        typealias NicknameValid = Constant.NicknameValid
+        guard let text = text, text.count >= 2, text.count < 10 else { throw NicknameValid.nicknameLength}
         let special: [Character] = ["@", "#", "$", "%"]
         let number: [Character] = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
         for char in text {
             if special.contains(char) {
-                return .containSpecial
+                throw NicknameValid.containSpecial
             }
             else if number.contains(char) {
-                return .containNumber
+                throw NicknameValid.containNumber
             }
         }
         return .correct

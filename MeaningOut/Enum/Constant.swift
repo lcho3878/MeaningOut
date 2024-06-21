@@ -116,7 +116,7 @@ enum Constant {
         }
     }
     
-    enum NicknameValid {
+    enum NicknameValid: Error {
         case correct
         case nicknameLength
         case containSpecial
