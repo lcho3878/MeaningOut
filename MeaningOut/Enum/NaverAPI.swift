@@ -8,7 +8,11 @@
 import Foundation
 import Alamofire
 
-enum NaverAPI {
+class NaverAPIManager {
+    
+    private init () {}
+    
+    static let shared = NaverAPIManager()
     
     enum ParamInfoItem: String {
         static let shoppingURL = "https://openapi.naver.com/v1/search/shop.json"
@@ -52,17 +56,17 @@ enum NaverAPI {
         case systemError = "서버 내부에 오류가 발생했습니다. 개발자에게 오류를 신고해 주십시오."
     }
 
-    static func callRequest(query: String, sort: String, display: Int, start: Int, completion: @escaping (ShoppingResult?, ErrorType?) -> Void) {
-        guard let url = URL(string: NaverAPI.ParamInfoItem.shoppingURL) else { return }
+    func callRequest(query: String, sort: String, display: Int, start: Int, completion: @escaping (ShoppingResult?, ErrorType?) -> Void) {
+        guard let url = URL(string: ParamInfoItem.shoppingURL) else { return }
         let param: Parameters = [
-            NaverAPI.ParamInfoItem.query.rawValue: query,
-            NaverAPI.ParamInfoItem.sort.rawValue: sort,
-            NaverAPI.ParamInfoItem.display.rawValue: display,
-            NaverAPI.ParamInfoItem.start.rawValue: start
+            ParamInfoItem.query.rawValue: query,
+            ParamInfoItem.sort.rawValue: sort,
+            ParamInfoItem.display.rawValue: display,
+            ParamInfoItem.start.rawValue: start
         ]
         let headers: HTTPHeaders = [
-            NaverAPI.HeaderInfoItem.clientID.rawValue: APIKey.clientId,
-            NaverAPI.HeaderInfoItem.secretKey.rawValue: APIKey.clientSecret
+            HeaderInfoItem.clientID.rawValue: APIKey.clientId,
+            HeaderInfoItem.secretKey.rawValue: APIKey.clientSecret
         ]
         AF.request(url, parameters: param,headers: headers)
             .validate(statusCode: 200...200)

@@ -133,7 +133,7 @@ class SearchResultViewController: BaseViewController {
 extension SearchResultViewController {
     
     private func callRequest() {
-        NaverAPI.callRequest(query: query, sort: sort, display: display, start: start) { value, error in
+        NaverAPIManager.shared.callRequest(query: query, sort: sort, display: display, start: start) { value, error in
             guard error == nil else {
                 self.showToast(error?.rawValue)
                 return
