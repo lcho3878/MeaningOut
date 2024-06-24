@@ -47,4 +47,14 @@ class BaseViewController: UIViewController, CodeBasable {
         view.makeToast(content, duration: 2, position: .bottom, style: toastStyle)
     }
     
+    func showAlert(title: String, message: String, confirmTitle: String, cancelTitle: String, completionHandler: @escaping () -> Void) {
+        let alert = UIAlertController(title: "탈퇴하기", message: "탈퇴를 하면 데이터가 모두 초기화됩니다. 탈퇴 하시겠습니까?", preferredStyle: .alert)
+        let comfirm = UIAlertAction(title: "확인", style: .destructive)  { _ in
+            completionHandler()
+        }
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        alert.addAction(comfirm)
+        alert.addAction(cancel)
+        present(alert, animated: true)
+    }
 }
