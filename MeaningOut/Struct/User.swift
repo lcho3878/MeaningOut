@@ -76,7 +76,7 @@ struct User {
     
     static func updateWishList(_ productId: String?) {
         guard let productId else { return }
-        if let isLike = User.wishList[productId] {
+        if User.wishList[productId] != nil {
             User.wishList.removeValue(forKey: productId)
         }
         else {
