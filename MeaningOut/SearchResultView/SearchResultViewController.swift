@@ -29,6 +29,7 @@ class SearchResultViewController: BaseViewController {
     
     private var sort = Constant.FilterButtonType.sim.sort {
         didSet{
+            guard oldValue != sort else { return }
             callRequest()
         }
     }
@@ -218,6 +219,7 @@ extension SearchResultViewController {
     private func configureSelectedButton() {
         simButton.isSelected = true
         sort = "sim"
+        callRequest()
     }
     
     @objc
