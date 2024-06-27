@@ -136,7 +136,7 @@ extension SearchResultViewController {
     private func callRequest() {
         NaverAPIManager.shared.callRequest(query: query, sort: sort, display: display, start: start) { value, error in
             guard error == nil else {
-                self.showToast(error?.rawValue)
+                self.showToast(error?.errorDescription)
                 return
             }
             guard let value else { return }

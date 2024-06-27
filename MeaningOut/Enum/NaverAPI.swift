@@ -45,15 +45,27 @@ class NaverAPIManager {
         }
     }
     
-    enum ErrorType: String {
-        case offline = "네트워크가 원활하지 않습니다. 네트워크 연결을 확인해주세요."
-        case incorectQuery = "잘못된 쿼리요청입니다. 검색어의 첫부분이 \"/, ., ^, !, #, %\"가 되지 않도록 해주세요"
-        case invalidDisplay = "부적절한 display 값입니다. 개발자에게 오류를 신고해 주십시오."
-        case invalidStart = "부적절한 start 값입니다. 개발자에게 오류를 신고해 주십시오."
-        case invalidSort = "부적절한 sort 값입니다. 개발자에게 오류를 신고해 주십시오."
-        case invalidEncoding = "잘못된 형식의 인코딩입니다. 개발자에게 오류를 신고해 주십시오."
-        case invalidAPI = "존재하지 않는 검색 api 입니다. 개발자에게 오류를 신고해 주십시오."
-        case systemError = "서버 내부에 오류가 발생했습니다. 개발자에게 오류를 신고해 주십시오."
+    enum ErrorType: LocalizedError {
+        case offline
+        case incorectQuery
+        case invalidDisplay
+        case invalidStart
+        case invalidSort
+        case invalidEncoding
+        case invalidAPI
+        case systemError
+        var errorDescription: String? {
+            switch self {
+            case .offline: return "네트워크가 원활하지 않습니다. 네트워크 연결을 확인해주세요."
+            case .incorectQuery: return "잘못된 쿼리요청입니다. 검색어의 첫부분이 \"/, ., ^, !, #, %\"가 되지 않도록 해주세요"
+            case .invalidDisplay: return "부적절한 display 값입니다. 개발자에게 오류를 신고해 주십시오."
+            case .invalidStart: return "부적절한 start 값입니다. 개발자에게 오류를 신고해 주십시오."
+            case .invalidSort: return "부적절한 sort 값입니다. 개발자에게 오류를 신고해 주십시오."
+            case .invalidEncoding: return "잘못된 형식의 인코딩입니다. 개발자에게 오류를 신고해 주십시오."
+            case .invalidAPI: return "존재하지 않는 검색 api 입니다. 개발자에게 오류를 신고해 주십시오."
+            case .systemError: return "서버 내부에 오류가 발생했습니다. 개발자에게 오류를 신고해 주십시오."
+            }
+        }
     }
 
     func callRequest(query: String, sort: String, display: Int, start: Int, completion: @escaping (ShoppingResult?, ErrorType?) -> Void) {
