@@ -24,8 +24,7 @@ struct Shopping: Decodable {
     let category4: String
     
     var isLike: Bool {
-        guard let isLike = User.wishList[productId] else { return false }
-        return isLike
+        return User.wishList.contains(productId)
     }
 
     var cleanTitle: String {

@@ -38,8 +38,14 @@ struct User {
     @UserDefault(key: key.searchList.rawValue, defaultValue: [:], storage: .standard)
     static var searchList: [String: Date]
     
-    @UserDefault(key: key.wishList.rawValue, defaultValue: [:], storage: .standard)
-    static var wishList: [String: Bool]
+    @UserDefault(key: key.wishList.rawValue, defaultValue: [], storage: .standard)
+    static var wishArray: [String]
+    
+    static var wishList: Set<String> {
+        get{ return Set(wishArray) }
+        set{ wishArray = Array(newValue) }
+
+    }
     
     static var wishListCountLabelText: NSAttributedString {
         let string = "\(wishList.count)개"
@@ -52,11 +58,11 @@ struct User {
     
     static func updateWishList(_ productId: String?) {
         guard let productId else { return }
-        if User.wishList[productId] != nil {
-            User.wishList.removeValue(forKey: productId)
+        if wishList.contains(productId) {
+            wishList.remove(productId)
         }
         else {
-            User.wishList[productId] = true
+            wishList.insert(productId)
         }
     }
     
