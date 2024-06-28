@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class MainViewController: BaseViewController {
+class SearchHistoryViewController: BaseViewController {
     
     //MARK: Properties
     var list = User.searchList{
@@ -150,7 +150,7 @@ class MainViewController: BaseViewController {
 }
 
 //MARK: Button Functions
-extension MainViewController {
+extension SearchHistoryViewController {
     
     @objc
     private func deleteButtonClicked() {
@@ -160,7 +160,7 @@ extension MainViewController {
 }
 
 //MARK: SearchBar Functions
-extension MainViewController: UISearchBarDelegate {
+extension SearchHistoryViewController: UISearchBarDelegate {
     
     private func configureSearchBar() {
         searchBar.delegate = self
@@ -174,7 +174,7 @@ extension MainViewController: UISearchBarDelegate {
 }
 
 //MARK: TableView Functions
-extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+extension SearchHistoryViewController: UITableViewDelegate, UITableViewDataSource {
     
     private func configureTableView() {
         searchTableView.delegate = self
@@ -205,7 +205,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 //MARK: SearchCellDelegate
-extension MainViewController: SearchCellDelegate {
+extension SearchHistoryViewController: SearchCellDelegate {
     
     func removeElement(_ key: String) {
         list.removeValue(forKey: key)

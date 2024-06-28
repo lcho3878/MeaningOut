@@ -11,7 +11,7 @@ class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let mainVC = MainViewController()
+        let mainVC = SearchHistoryViewController()
         let mainNaVC = UINavigationController(rootViewController: mainVC)
         mainNaVC.tabBarItem = UITabBarItem(title: "검색", image: Constant.IconImage.magnifyingglass, tag: 0)
         

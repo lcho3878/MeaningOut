@@ -27,7 +27,7 @@
 		542A02592C1C15B400F8BE47 /* ProfileImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A02582C1C15B400F8BE47 /* ProfileImageViewController.swift */; };
 		542A025B2C1C1A5400F8BE47 /* ProfileImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A025A2C1C1A5400F8BE47 /* ProfileImageCollectionViewCell.swift */; };
 		542A025D2C1C3BBF00F8BE47 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A025C2C1C3BBF00F8BE47 /* TabBarController.swift */; };
-		542A025F2C1C3DE600F8BE47 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A025E2C1C3DE600F8BE47 /* MainViewController.swift */; };
+		542A025F2C1C3DE600F8BE47 /* SearchHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A025E2C1C3DE600F8BE47 /* SearchHistoryViewController.swift */; };
 		542A02612C1C4AF700F8BE47 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A02602C1C4AF700F8BE47 /* SettingViewController.swift */; };
 		542A02632C1C4BF100F8BE47 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A02622C1C4BF100F8BE47 /* Reusable.swift */; };
 		542A02652C1C4C1E00F8BE47 /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A02642C1C4C1E00F8BE47 /* UICollectionViewCell+Extension.swift */; };
@@ -69,7 +69,7 @@
 		542A02582C1C15B400F8BE47 /* ProfileImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageViewController.swift; sourceTree = "<group>"; };
 		542A025A2C1C1A5400F8BE47 /* ProfileImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		542A025C2C1C3BBF00F8BE47 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		542A025E2C1C3DE600F8BE47 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		542A025E2C1C3DE600F8BE47 /* SearchHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryViewController.swift; sourceTree = "<group>"; };
 		542A02602C1C4AF700F8BE47 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		542A02622C1C4BF100F8BE47 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		542A02642C1C4C1E00F8BE47 /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
@@ -135,7 +135,7 @@
 				542A02542C1B646100F8BE47 /* ProfileViewController.swift */,
 				542A02582C1C15B400F8BE47 /* ProfileImageViewController.swift */,
 				542A025A2C1C1A5400F8BE47 /* ProfileImageCollectionViewCell.swift */,
-				542A026F2C1D5DDF00F8BE47 /* MainView */,
+				542A026F2C1D5DDF00F8BE47 /* SearchHistoryView */,
 				542A02662C1C569100F8BE47 /* SettingView */,
 				54E18D0E2C201A7C00C1BFEC /* SearchResultView */,
 				542A027F2C1DB19D00F8BE47 /* DetailViewController.swift */,
@@ -208,13 +208,13 @@
 			path = SettingView;
 			sourceTree = "<group>";
 		};
-		542A026F2C1D5DDF00F8BE47 /* MainView */ = {
+		542A026F2C1D5DDF00F8BE47 /* SearchHistoryView */ = {
 			isa = PBXGroup;
 			children = (
-				542A025E2C1C3DE600F8BE47 /* MainViewController.swift */,
+				542A025E2C1C3DE600F8BE47 /* SearchHistoryViewController.swift */,
 				542A02702C1D5DF800F8BE47 /* SearchCell.swift */,
 			);
-			path = MainView;
+			path = SearchHistoryView;
 			sourceTree = "<group>";
 		};
 		542A02742C1D63FE00F8BE47 /* Struct */ = {
@@ -343,7 +343,7 @@
 				542A02822C1EFF2B00F8BE47 /* NaverAPI.swift in Sources */,
 				542A026A2C1C581500F8BE47 /* UITableViewCell+Extension.swift in Sources */,
 				542A023B2C1B538300F8BE47 /* APIKey.swift in Sources */,
-				542A025F2C1C3DE600F8BE47 /* MainViewController.swift in Sources */,
+				542A025F2C1C3DE600F8BE47 /* SearchHistoryViewController.swift in Sources */,
 				542A025B2C1C1A5400F8BE47 /* ProfileImageCollectionViewCell.swift in Sources */,
 				542A02552C1B646100F8BE47 /* ProfileViewController.swift in Sources */,
 				542A02682C1C56AC00F8BE47 /* ProfileCell.swift in Sources */,
