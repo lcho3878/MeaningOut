@@ -96,7 +96,7 @@ class ProfileCell: UITableViewCell {
     private func configureData() {
         profileImageView.image = User.profileImage
         nicknameLabel.text = User.nickname
-        dateLabel.text = User.signupDate
+        dateLabel.text = User.signupDateLabel
     }
 
 }
