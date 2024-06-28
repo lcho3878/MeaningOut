@@ -10,60 +10,36 @@ import UIKit
 struct User {
     typealias key = UserDataKey
     
-    static var nickanme: String? {
-        get {
-            guard let nickname = UserDefaults.standard.string(forKey: key.nickname.rawValue) else {
-                return nil
-            }
-            return nickname
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey: key.nickname.rawValue)
-        }
-    }
+    @UserDefault(key: key.nickname.rawValue, defaultValue: nil, storage: .standard)
+    static var nickname: String?
+    
+    @UserDefault(key: key.profileImageAssetName.rawValue, defaultValue: nil, storage: .standard)
+    static var profileImageAssetName: String?
     
     static var profileImage: UIImage? {
         get {
-            guard let imageAssetName = UserDefaults.standard.string(forKey: key.profileImageAssetName.rawValue) else { return nil }
-            return UIImage(named: imageAssetName)
+            guard let profileImageAssetName else { return nil }
+            return UIImage(named: profileImageAssetName)
         }
         set {
             guard let imageAssetName = newValue?.imageAsset?.value(forKey: "assetName") else { return }
-            UserDefaults.standard.set(imageAssetName, forKey: key.profileImageAssetName.rawValue)
+            profileImageAssetName = imageAssetName as? String
         }
     }
     
-    static var signupDate: String? {
-        get {
-            guard let signupDate = UserDefaults.standard.string(forKey: key.signupDate.rawValue) else {
-                return nil
-            }
-            return signupDate + " 가입"
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey: key.signupDate.rawValue)
-        }
+    @UserDefault(key: key.signupDate.rawValue, defaultValue: nil, storage: .standard)
+    static var signupDate: String?
+    
+    static var signupDateLabel: String {
+        guard let signupDate else { return "가입"}
+        return signupDate + "가입"
     }
     
-    static var searchList: [String: Date] {
-        get {
-            guard let searchList = UserDefaults.standard.value(forKey: key.searchList.rawValue) as? [String: Date] else { return [:] }
-            return searchList
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey: key.searchList.rawValue)
-        }
-    }
+    @UserDefault(key: key.searchList.rawValue, defaultValue: [:], storage: .standard)
+    static var searchList: [String: Date]
     
-    static var wishList: [String: Bool] {
-        get {
-            guard let wishList = UserDefaults.standard.dictionary(forKey: key.wishList.rawValue) as? [String: Bool] else { return [:] }
-            return wishList
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey: key.wishList.rawValue)
-        }
-    }
+    @UserDefault(key: key.wishList.rawValue, defaultValue: [:], storage: .standard)
+    static var wishList: [String: Bool]
     
     static var wishListCountLabelText: NSAttributedString {
         let string = "\(wishList.count)개"

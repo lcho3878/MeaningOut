@@ -102,8 +102,8 @@ enum Constant {
             case .profileSetting:
                 return "PROFILE SETTING"
             case .main:
-                guard User.nickanme != nil else { return "'s MEANING OUT"}
-                return "\(User.nickanme!)'s MEANING OUT"
+                guard User.nickname != nil else { return "'s MEANING OUT"}
+                return "\(User.nickname!)'s MEANING OUT"
             case .setting:
                 return "SETTING"
             case .search:

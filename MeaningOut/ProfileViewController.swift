@@ -51,8 +51,8 @@ class ProfileViewController: BaseViewController {
         nicknameTextField.font = Constant.FontSize.contentBold
         nicknameTextField.placeholder = Constant.TextFieldType.nickname.rawValue
         if viewType == .profileEdit {
-            nicknameTextField.text = User.nickanme
-            configureValidCheckLabel(User.nickanme)
+            nicknameTextField.text = User.nickname
+            configureValidCheckLabel(User.nickname)
         }
         nicknameTextField.addTarget(self, action: #selector(nicknameTextFieldChanged), for: .editingChanged)
         return nicknameTextField
@@ -170,7 +170,7 @@ extension ProfileViewController {
     private func completeButtonClicked() {
         guard let nickname = nicknameTextField.text else { return }
         guard isValidNickname(nickname) else { return }
-        User.nickanme = nickname
+        User.nickname = nickname
         User.profileImage = profileImageView.image
         User.signupDate = Date().dateString("yyyy.MM.dd")
         let tabbarVC = TabBarController()
@@ -181,7 +181,7 @@ extension ProfileViewController {
     private func saveButtonClikced() {
         guard let nickname = nicknameTextField.text else { return }
         guard isValidNickname(nickname) else { return }
-        User.nickanme = nickname
+        User.nickname = nickname
         User.profileImage = profileImageView.image
         delegate?.updateUI()
         navigationController?.popViewController(animated: true)

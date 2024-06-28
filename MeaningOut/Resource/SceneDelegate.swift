@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
         let rootVC: UIViewController
-        if User.nickanme != nil {
+        if User.nickname != nil {
             rootVC = TabBarController()
         }
         else {
