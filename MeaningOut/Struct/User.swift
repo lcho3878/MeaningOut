@@ -31,8 +31,8 @@ struct User {
     static var signupDate: String?
     
     static var signupDateLabel: String {
-        guard let signupDate else { return "가입"}
-        return signupDate + "가입"
+        guard let signupDate else { return " 가입"}
+        return signupDate + " 가입"
     }
     
     @UserDefault(key: key.searchList.rawValue, defaultValue: [:], storage: .standard)
