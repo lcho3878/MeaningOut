@@ -9,11 +9,15 @@ import Foundation
 
 extension Date {
     
-    func dateString(_ format: String) -> String {
+    private static let dateFormatter = {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = format
         dateFormatter.locale = Locale(identifier: "ko_KR")
-        let formattedDate = dateFormatter.string(from: self)
+        return dateFormatter
+    }()
+    
+    func dateString(_ format: String) -> String {
+        Date.dateFormatter.dateFormat = format
+        let formattedDate = Date.dateFormatter.string(from: self)
         return formattedDate
     }
     
