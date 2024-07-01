@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class SettingCell: UITableViewCell {
+final class SettingCell: UITableViewCell {
     
     //MARK: View Properties
     private let titleLabel = {

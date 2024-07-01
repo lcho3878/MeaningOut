@@ -13,7 +13,7 @@ protocol DetailViewControllerDelegate: AnyObject {
     func updateUI(_ row: Int)
 }
 
-class DetailViewController: BaseViewController {
+final class DetailViewController: BaseViewController {
 
     //MARK: Properties
     private let viewType = Constant.ViewType.result

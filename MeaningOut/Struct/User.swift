@@ -14,7 +14,7 @@ struct User {
     static var nickname: String?
     
     @UserDefault(key: key.profileImageAssetName.rawValue, defaultValue: nil, storage: .standard)
-    static var profileImageAssetName: String?
+    static private var profileImageAssetName: String?
     
     static var profileImage: UIImage? {
         get {
@@ -39,7 +39,7 @@ struct User {
     static var searchList: [String: Date]
     
     @UserDefault(key: key.wishList.rawValue, defaultValue: [], storage: .standard)
-    static var wishArray: [String]
+    static private var wishArray: [String]
     
     static var wishList: Set<String> {
         get{ return Set(wishArray) }

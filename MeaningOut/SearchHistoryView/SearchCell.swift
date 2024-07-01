@@ -12,7 +12,7 @@ protocol SearchCellDelegate: AnyObject {
     func removeElement(_ key: String)
 }
 
-class SearchCell: UITableViewCell {
+final class SearchCell: UITableViewCell {
     
     //MARK: Properties
     var key: String!

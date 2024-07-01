@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class ProfileCell: UITableViewCell {
+final class ProfileCell: UITableViewCell {
 
     //MARK: View Properties
     private let profileImageView = {

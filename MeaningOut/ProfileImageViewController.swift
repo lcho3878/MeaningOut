@@ -12,7 +12,7 @@ protocol ProfileImageViewControllerDelegate: AnyObject {
     func updateProfileImage(_ image: UIImage)
 }
 
-class ProfileImageViewController: BaseViewController {
+final class ProfileImageViewController: BaseViewController {
     
     //MARK: Properties
     var viewType: Constant.ViewType!

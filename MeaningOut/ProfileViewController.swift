@@ -12,7 +12,7 @@ protocol ProfileViewControllerDelegate: AnyObject {
     func updateUI()
 }
 
-class ProfileViewController: BaseViewController {
+final class ProfileViewController: BaseViewController {
     
     //MARK: Properties
     var viewType: Constant.ViewType!

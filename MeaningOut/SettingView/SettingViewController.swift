@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class SettingViewController: BaseViewController {
+final class SettingViewController: BaseViewController {
 
     //MARK: Properties
     private let viewTyle = Constant.ViewType.setting

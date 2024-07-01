@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-class NaverAPIManager {
+final class NaverAPIManager {
     
     private init () {}
     
