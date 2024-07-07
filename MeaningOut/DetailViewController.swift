@@ -84,6 +84,7 @@ extension DetailViewController {
     private func barButtonClick() {
         guard let row else { return }
         User.updateWishList(data.productId)
+        WishRepository.shared.updateWishList(data)
         configureBarButtonImage()
         delegate?.updateUI(row)
     }

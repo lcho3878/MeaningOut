@@ -103,6 +103,10 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(profileEditVC, animated: true)
         }
         else {
+            if indexPath.row == 0 {
+                let wishlistVC = WishListViewController()
+                navigationController?.pushViewController(wishlistVC, animated: true)
+            }
             guard indexPath.row == 4 else { return }
             showAlert(title: "탈퇴하기", message: "탈퇴를 하면 데이터가 모두 초기화됩니다. 탈퇴 하시겠습니까?", confirmTitle: "탈퇴하기", cancelTitle: "확인") {
                 User.resetUserDate()

@@ -246,6 +246,8 @@ extension SearchResultViewController: DetailViewControllerDelegate {
 extension SearchResultViewController: SearchResultCollectionViewCellDelegate {
     
     func reloadData(_ row: Int) {
+        let shopping = list[row]
+        WishRepository.shared.updateWishList(shopping)
         resultCollectionView.reloadItems(at: [IndexPath(row: row, section: 0)])
     }
     
