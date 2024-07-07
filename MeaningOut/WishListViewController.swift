@@ -33,7 +33,6 @@ final class WishListViewController: BaseViewController {
         super.viewDidLoad()
         configureCollectionView()
         let realm = try! Realm()
-        print(realm.configuration.fileURL)
     }
     
     override func viewWillAppear(_ animated: Bool) {
