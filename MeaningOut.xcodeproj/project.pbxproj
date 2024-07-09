@@ -50,6 +50,7 @@
 		5491953B2C3A8B1700C28B31 /* WishListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5491953A2C3A8B1700C28B31 /* WishListViewController.swift */; };
 		54E18D0B2C20047B00C1BFEC /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E18D0A2C20047B00C1BFEC /* UIButton+Extension.swift */; };
 		54E18D0D2C201A2B00C1BFEC /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E18D0C2C201A2B00C1BFEC /* String+Extension.swift */; };
+		54E4003D2C3D3D1100F8A900 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E4003C2C3D3D1100F8A900 /* Observable.swift */; };
 		54EABE182C2ECE6B001802E0 /* PropertyWrapper+UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EABE172C2ECE6B001802E0 /* PropertyWrapper+UserDefault.swift */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +95,7 @@
 		5491953A2C3A8B1700C28B31 /* WishListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListViewController.swift; sourceTree = "<group>"; };
 		54E18D0A2C20047B00C1BFEC /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		54E18D0C2C201A2B00C1BFEC /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		54E4003C2C3D3D1100F8A900 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		54EABE172C2ECE6B001802E0 /* PropertyWrapper+UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PropertyWrapper+UserDefault.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,6 +135,7 @@
 		542A02232C1B534B00F8BE47 /* MeaningOut */ = {
 			isa = PBXGroup;
 			children = (
+				54E4003B2C3D3D0600F8A900 /* Observable */,
 				542A02532C1B630700F8BE47 /* Resource */,
 				549195352C3A89BE00C28B31 /* Realm */,
 				542A02742C1D63FE00F8BE47 /* Struct */,
@@ -256,6 +259,14 @@
 			path = SearchResultView;
 			sourceTree = "<group>";
 		};
+		54E4003B2C3D3D0600F8A900 /* Observable */ = {
+			isa = PBXGroup;
+			children = (
+				54E4003C2C3D3D1100F8A900 /* Observable.swift */,
+			);
+			path = Observable;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -371,6 +382,7 @@
 				542A025B2C1C1A5400F8BE47 /* ProfileImageCollectionViewCell.swift in Sources */,
 				542A02552C1B646100F8BE47 /* ProfileViewController.swift in Sources */,
 				542A02682C1C56AC00F8BE47 /* ProfileCell.swift in Sources */,
+				54E4003D2C3D3D1100F8A900 /* Observable.swift in Sources */,
 				54EABE182C2ECE6B001802E0 /* PropertyWrapper+UserDefault.swift in Sources */,
 				542A025D2C1C3BBF00F8BE47 /* TabBarController.swift in Sources */,
 				542A02272C1B534B00F8BE47 /* SceneDelegate.swift in Sources */,
