@@ -51,6 +51,7 @@
 		54E18D0B2C20047B00C1BFEC /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E18D0A2C20047B00C1BFEC /* UIButton+Extension.swift */; };
 		54E18D0D2C201A2B00C1BFEC /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E18D0C2C201A2B00C1BFEC /* String+Extension.swift */; };
 		54E4003D2C3D3D1100F8A900 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E4003C2C3D3D1100F8A900 /* Observable.swift */; };
+		54E400412C3D3E1400F8A900 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E400402C3D3E1400F8A900 /* ProfileViewModel.swift */; };
 		54EABE182C2ECE6B001802E0 /* PropertyWrapper+UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EABE172C2ECE6B001802E0 /* PropertyWrapper+UserDefault.swift */; };
 /* End PBXBuildFile section */
 
@@ -96,6 +97,7 @@
 		54E18D0A2C20047B00C1BFEC /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		54E18D0C2C201A2B00C1BFEC /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		54E4003C2C3D3D1100F8A900 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		54E400402C3D3E1400F8A900 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		54EABE172C2ECE6B001802E0 /* PropertyWrapper+UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PropertyWrapper+UserDefault.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -144,7 +146,7 @@
 				542A023F2C1B562B00F8BE47 /* Protocol */,
 				542A023C2C1B55C100F8BE47 /* CustomView */,
 				542A02282C1B534B00F8BE47 /* OnboardingViewController.swift */,
-				542A02542C1B646100F8BE47 /* ProfileViewController.swift */,
+				54E4003F2C3D3E0900F8A900 /* ProfileView */,
 				542A02582C1C15B400F8BE47 /* ProfileImageViewController.swift */,
 				542A025A2C1C1A5400F8BE47 /* ProfileImageCollectionViewCell.swift */,
 				542A026F2C1D5DDF00F8BE47 /* SearchHistoryView */,
@@ -267,6 +269,15 @@
 			path = Observable;
 			sourceTree = "<group>";
 		};
+		54E4003F2C3D3E0900F8A900 /* ProfileView */ = {
+			isa = PBXGroup;
+			children = (
+				542A02542C1B646100F8BE47 /* ProfileViewController.swift */,
+				54E400402C3D3E1400F8A900 /* ProfileViewModel.swift */,
+			);
+			path = ProfileView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -372,6 +383,7 @@
 				54E18D0D2C201A2B00C1BFEC /* String+Extension.swift in Sources */,
 				542A02502C1B5B7F00F8BE47 /* Constant.swift in Sources */,
 				542A02252C1B534B00F8BE47 /* AppDelegate.swift in Sources */,
+				54E400412C3D3E1400F8A900 /* ProfileViewModel.swift in Sources */,
 				542A026C2C1C5CF700F8BE47 /* SettingCell.swift in Sources */,
 				542A02822C1EFF2B00F8BE47 /* NaverAPI.swift in Sources */,
 				542A026A2C1C581500F8BE47 /* UITableViewCell+Extension.swift in Sources */,
