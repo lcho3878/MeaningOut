@@ -42,6 +42,7 @@ class BaseViewController: UIViewController, CodeBasable {
     }
     
     func showToast(_ content: String?) {
+        guard let content else { return }
         var toastStyle = ToastStyle()
         toastStyle.backgroundColor = Constant.AppColor.orange
         view.makeToast(content, duration: 2, position: .bottom, style: toastStyle)

@@ -19,6 +19,8 @@ final class ProfileViewController: BaseViewController {
     
     weak var delegate: ProfileViewControllerDelegate?
     
+    private let viewModel = ProfileViewModel()
+    
     //MARK: View Properties
     private lazy var profileImageView = {
         let profileImageView = UIImageView()
@@ -52,7 +54,6 @@ final class ProfileViewController: BaseViewController {
         nicknameTextField.placeholder = Constant.TextFieldType.nickname.rawValue
         if viewType == .profileEdit {
             nicknameTextField.text = User.nickname
-            configureValidCheckLabel(User.nickname)
         }
         nicknameTextField.addTarget(self, action: #selector(nicknameTextFieldChanged), for: .editingChanged)
         return nicknameTextField
@@ -85,6 +86,8 @@ final class ProfileViewController: BaseViewController {
     //MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        bindData()
+
     }
     
     override func viewDidLayoutSubviews() {
@@ -95,6 +98,16 @@ final class ProfileViewController: BaseViewController {
     }
     
     //MARK: View Functions
+    private func bindData() {
+        viewModel.outputNickname.bind { value in
+            self.validCheckLabel.text = value
+        }
+        nicknameTextFieldChanged(nicknameTextField)
+        viewModel.outputError.bind { error in
+            self.showToast(error?.validResult)
+        }
+    }
+    
     override func configureNavigationItem() {
         navigationItem.title = viewType.navigationTitle
         if viewType == .profileEdit {
@@ -142,17 +155,7 @@ final class ProfileViewController: BaseViewController {
         }
     }
     
-    private func configureValidCheckLabel(_ nickname: String?) {
-        guard (nickname != nil) else { return }
-        do {
-            let result = try checkValid(nickname)
-            validCheckLabel.text = result.validResult
-        }
-        catch {
-            guard let error = error as? Constant.NicknameValid else { return }
-            validCheckLabel.text = error.validResult
-        }
-    }
+
 
 }
 
@@ -168,9 +171,8 @@ extension ProfileViewController {
     }
     
     private func completeButtonClicked() {
-        guard let nickname = nicknameTextField.text else { return }
-        guard isValidNickname(nickname) else { return }
-        User.nickname = nickname
+        viewModel.saveButtonClikced.value = ()
+        guard viewModel.outputError.value == nil else { return }
         User.profileImage = profileImageView.image
         User.signupDate = Date().dateString("yyyy.MM.dd")
         let tabbarVC = TabBarController()
@@ -179,25 +181,14 @@ extension ProfileViewController {
     
     @objc
     private func saveButtonClikced() {
-        guard let nickname = nicknameTextField.text else { return }
-        guard isValidNickname(nickname) else { return }
-        User.nickname = nickname
+        viewModel.saveButtonClikced.value = ()
+        guard viewModel.outputError.value == nil else { return }
         User.profileImage = profileImageView.image
         delegate?.updateUI()
         navigationController?.popViewController(animated: true)
     }
     
-    private func isValidNickname(_ nickname: String) -> Bool {
-        do {
-            try checkValid(nickname)
-            return true
-        }
-        catch {
-            guard let error = error as? Constant.NicknameValid else { return false }
-            showToast(error.validResult)
-            return false
-        }
-    }
+
 }
 
 //MARK: TextField Functions
@@ -205,25 +196,7 @@ extension ProfileViewController {
 
     @objc
     private func nicknameTextFieldChanged(_ sender: UITextField) {
-        guard let nickname = nicknameTextField.text else { return }
-        configureValidCheckLabel(nickname)
-    }
-    
-    @discardableResult
-    private func checkValid(_ text: String?) throws -> Constant.NicknameValid {
-        typealias NicknameValid = Constant.NicknameValid
-        guard let text = text, text.count >= 2, text.count < 10 else { throw NicknameValid.nicknameLength}
-        let special: [Character] = ["@", "#", "$", "%"]
-        let number: [Character] = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
-        for char in text {
-            if special.contains(char) {
-                throw NicknameValid.containSpecial
-            }
-            else if number.contains(char) {
-                throw NicknameValid.containNumber
-            }
-        }
-        return .correct
+        viewModel.inputNickname.value = nicknameTextField.text
     }
     
 }
