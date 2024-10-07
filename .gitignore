@@ -2,6 +2,7 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=xcode,swift
 
 APIKey.swift
+GoogleService-Info.plist
 
 ### Swift ###
 # Xcode
