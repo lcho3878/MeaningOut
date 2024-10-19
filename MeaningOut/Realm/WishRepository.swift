@@ -5,45 +5,74 @@
 //  Created by 이찬호 on 7/7/24.
 //
 
-import Foundation
 import RealmSwift
+import UIKit
+import CoreData
 
 final class WishRepository {
-    
     static let shared = WishRepository()
     
     private init() {}
     
-    private let realm = try! Realm()
+    private let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    private lazy var context = appDelegate.persistentContainer.viewContext
     
-    func readItems() -> Results<Wish> {
-        return realm.objects(Wish.self)
-    }
-    
-    private func addItem(_ wish: Wish) {
-        try! realm.write {
-            realm.add(wish)
+    private func saveContext() {
+        do {
+            try context.save()
+        } catch {
+            print("Error \(error)")
         }
     }
     
-    private func deleteItem(_ key: String) {
-        guard let wish = readItem(key) else { return }
-        try! realm.write {
-            realm.delete(wish)
+    func fetchWishItems() -> [WishItem] {
+        do {
+            let wishItems = try context.fetch(WishItem.fetchRequest()) as! [WishItem]
+            return wishItems
+        } catch {
+            return []
         }
     }
     
-    private func readItem(_ key: String) -> Wish? {
-        return realm.object(ofType: Wish.self, forPrimaryKey: key)
+    func readWishItem(_ productId: String) -> WishItem? {
+        let fetchRequest = WishItem.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "productId == \(productId)", productId)
+        do {
+            guard let result = try context.fetch(fetchRequest).first else { return nil }
+            return result
+        } catch {
+            return nil
+        }
     }
     
-    func updateWishList(_ shopping: Shopping) {
-        if shopping.isLike {
-            let wish = Wish(shopping: shopping)
-            addItem(wish)
+    func addItem(_ data: Shopping) {
+        if let entity = NSEntityDescription.entity(forEntityName: "WishItem", in: context) {
+            let wishItem = NSManagedObject(entity: entity, insertInto: context)
+            wishItem.setValue(data.brand, forKey: "brand")
+            wishItem.setValue(data.image, forKey: "imageUrl")
+            wishItem.setValue(data.link, forKey: "link")
+            wishItem.setValue(data.maker, forKey: "maker")
+            wishItem.setValue(data.mallName, forKey: "mallName")
+            wishItem.setValue(data.price, forKey: "price")
+            wishItem.setValue(data.productId, forKey: "productId")
+            wishItem.setValue(data.cleanTitle, forKey: "title")
+        }
+        saveContext()
+    }
+    
+    func deleteItem(_ wishItem: WishItem) {
+        context.delete(wishItem)
+        saveContext()
+    }
+    
+    func updateWishList(_ data: Shopping) {
+        if data.isLike {
+            addItem(data)
         }
         else {
-            deleteItem(shopping.productId)
+            if let wishItem = readWishItem(data.productId) {
+                deleteItem(wishItem)
+            }
         }
     }
 }

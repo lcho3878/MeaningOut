@@ -7,11 +7,10 @@
 
 import UIKit
 import SnapKit
-import RealmSwift
 
 final class WishListViewController: BaseViewController {
     
-    var list = WishRepository.shared.readItems()
+    var list = WishRepository.shared.fetchWishItems()
     
     private let wishCollectionViewLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -32,7 +31,6 @@ final class WishListViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
-        let realm = try! Realm()
     }
     
     override func viewWillAppear(_ animated: Bool) {

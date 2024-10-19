@@ -44,6 +44,7 @@
 		542A02802C1DB19D00F8BE47 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A027F2C1DB19D00F8BE47 /* DetailViewController.swift */; };
 		542A02822C1EFF2B00F8BE47 /* NaverAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542A02812C1EFF2B00F8BE47 /* NaverAPI.swift */; };
 		542A02852C1F0C7700F8BE47 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 542A02842C1F0C7700F8BE47 /* Toast */; };
+		5462D9C02CC43B3000EC3E78 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5462D9BE2CC43B3000EC3E78 /* Model.xcdatamodeld */; };
 		5474E09A2CB3B7D80054E890 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 5474E0992CB3B7D80054E890 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		5474E09C2CB3B7D80054E890 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5474E09B2CB3B7D80054E890 /* FirebaseCrashlytics */; };
 		5474E09E2CB3B7D80054E890 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 5474E09D2CB3B7D80054E890 /* FirebaseMessaging */; };
@@ -95,6 +96,7 @@
 		542A027B2C1D724500F8BE47 /* SearchResultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCollectionViewCell.swift; sourceTree = "<group>"; };
 		542A027F2C1DB19D00F8BE47 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		542A02812C1EFF2B00F8BE47 /* NaverAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverAPI.swift; sourceTree = "<group>"; };
+		5462D9BF2CC43B3000EC3E78 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		5474E0972CB3B6C60054E890 /* MeaningOut.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MeaningOut.entitlements; sourceTree = "<group>"; };
 		549195362C3A89C900C28B31 /* Wish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wish.swift; sourceTree = "<group>"; };
 		549195382C3A8A4D00C28B31 /* WishRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishRepository.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				54EBD6DA2CB3BF4500581021 /* GoogleService-Info.plist */,
 				542A02322C1B534C00F8BE47 /* Info.plist */,
 				542A023A2C1B538300F8BE47 /* APIKey.swift */,
+				5462D9BE2CC43B3000EC3E78 /* Model.xcdatamodeld */,
 			);
 			path = MeaningOut;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				542A024E2C1B5B2200F8BE47 /* UIColor+Extension.swift in Sources */,
 				542A02612C1C4AF700F8BE47 /* SettingViewController.swift in Sources */,
 				542A02522C1B5CFB00F8BE47 /* Button.swift in Sources */,
+				5462D9C02CC43B3000EC3E78 /* Model.xcdatamodeld in Sources */,
 				542A02802C1DB19D00F8BE47 /* DetailViewController.swift in Sources */,
 				542A023E2C1B55CB00F8BE47 /* BaseViewController.swift in Sources */,
 				542A02762C1D640E00F8BE47 /* ProfileImage.swift in Sources */,
@@ -739,6 +743,20 @@
 			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		5462D9BE2CC43B3000EC3E78 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5462D9BF2CC43B3000EC3E78 /* Model.xcdatamodel */,
+			);
+			currentVersion = 5462D9BF2CC43B3000EC3E78 /* Model.xcdatamodel */;
+			name = Model.xcdatamodeld;
+			path = /Users/lcho3878/Desktop/SeSAC/MeaningOut/MeaningOut/Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 542A02192C1B534A00F8BE47 /* Project object */;
 }

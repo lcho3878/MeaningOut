@@ -121,9 +121,11 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
         wishButton.backgroundColor = data.isLike ? Constant.AppColor.white : Constant.AppColor.lightGrayBorder
     }
     
-    func configureData(_ data: Wish) {
-        let url = URL(string: data.imageUrl)
-        itemImageView.kf.setImage(with: url)
+    func configureData(_ data: WishItem) {
+        if let imageUrl = data.imageUrl {
+            let url = URL(string: imageUrl)
+            itemImageView.kf.setImage(with: url)
+        }
         mallLabel.text = data.mallName
         titleLabel.text = data.title
         priceLabel.text = data.price
