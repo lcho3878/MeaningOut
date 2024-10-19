@@ -5,7 +5,6 @@
 //  Created by 이찬호 on 7/7/24.
 //
 
-import RealmSwift
 import UIKit
 import CoreData
 
