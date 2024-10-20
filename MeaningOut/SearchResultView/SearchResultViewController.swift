@@ -69,6 +69,14 @@ class SearchResultViewController: BaseViewController {
     }()
     
     private lazy var resultCollectionView = UICollectionView(frame: .zero, collectionViewLayout: resultCollectionViewLayout)
+    
+    private let activityIndicator = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.style = .large
+        activityIndicator.color = Constant.AppColor.orange
+        activityIndicator.hidesWhenStopped = true
+        return activityIndicator
+    }()
 
     //MARK: View Life Cycle
     override func viewDidLoad() {
@@ -89,6 +97,7 @@ class SearchResultViewController: BaseViewController {
         view.addSubview(dscButton)
         view.addSubview(ascButton)
         view.addSubview(resultCollectionView)
+        view.addSubview(activityIndicator)
     }
     
     //MARK: View Functions
@@ -126,6 +135,10 @@ class SearchResultViewController: BaseViewController {
             $0.top.equalTo(simButton.snp.bottom).offset(8)
             $0.bottom.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
         }
+        
+        activityIndicator.snp.makeConstraints {
+            $0.edges.equalTo(view.safeAreaLayoutGuide)
+        }
     }
     
 }
@@ -134,7 +147,9 @@ class SearchResultViewController: BaseViewController {
 extension SearchResultViewController {
     
     private func callRequest() {
-        NaverAPIManager.shared.callRequest(query: query, sort: sort, display: display, start: start) { value, error in
+        activityIndicator.startAnimating()
+        NaverAPIManager.shared.callRequest(query: query, sort: sort, display: display, start: start) { [weak self] value, error in
+            guard let self else { return }
             guard error == nil else {
                 self.showToast(error?.errorDescription)
                 return
@@ -150,6 +165,7 @@ extension SearchResultViewController {
             else {
                 self.list.append(contentsOf: value.items)
             }
+            self.activityIndicator.stopAnimating()
         }
     }
     
@@ -172,13 +188,12 @@ extension SearchResultViewController: UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let  cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchResultCollectionViewCell.id, for: indexPath) as? SearchResultCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchResultCollectionViewCell.id, for: indexPath) as? SearchResultCollectionViewCell else { return UICollectionViewCell() }
         let data = list[indexPath.row]
         cell.configureData(data, query)
         cell.tag = indexPath.row
         cell.delegate = self
         return cell
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
