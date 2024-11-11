@@ -147,7 +147,7 @@
 				5474E0972CB3B6C60054E890 /* MeaningOut.entitlements */,
 				54E4003B2C3D3D0600F8A900 /* Observable */,
 				542A02532C1B630700F8BE47 /* Resource */,
-				549195352C3A89BE00C28B31 /* Realm */,
+				549195352C3A89BE00C28B31 /* CoreData */,
 				542A02742C1D63FE00F8BE47 /* Struct */,
 				542A024C2C1B5B1400F8BE47 /* Extension */,
 				542A024B2C1B5B0C00F8BE47 /* Enum */,
@@ -253,12 +253,12 @@
 			path = Struct;
 			sourceTree = "<group>";
 		};
-		549195352C3A89BE00C28B31 /* Realm */ = {
+		549195352C3A89BE00C28B31 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
 				549195382C3A8A4D00C28B31 /* WishRepository.swift */,
 			);
-			path = Realm;
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		54E18D0E2C201A7C00C1BFEC /* SearchResultView */ = {
