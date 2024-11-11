@@ -56,8 +56,8 @@ final class ProfileCell: UITableViewCell {
         configureData()
     }
     
-    override func layoutSubviews() {
-        profileImageView.layoutIfNeeded()
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
         profileImageView.makeCircle()
     }
     

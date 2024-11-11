@@ -47,9 +47,8 @@ final class ProfileImageCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        profileImageView.layoutIfNeeded()
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
         profileImageView.makeCircle()
     }
     
